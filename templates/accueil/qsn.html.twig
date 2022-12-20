@@ -1,0 +1,24 @@
+{% extends "base.html.twig" %}
+{% block innerPage %} FINA SARL  {% endblock %}
+{% block body %}
+<!-- arrival section -->
+		<section class="arrival_section">
+			<div class="container">
+				<div class="box">
+					<div class="row">
+						<div class="col-md-12 col ml-auto">
+						{{page}} <br />
+								<a href="{{asset('profilefina2.pdf')}}">Télécharger profil</a>
+						</div>
+						<div class="col-md-12 col ml-auto">
+						<ul class="list-group">
+						{% for partenaire in partenaires %}
+							<li class="list-itel"> {{partenaire}} </li>
+						{% endfor %}
+						</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- end arrival section -->{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+{% block innerPage %} Ecrivez nous, nous vous rappellons  {% endblock %}
+{% block body %}
+<!-- why section -->
+		<section class="why_section layout_padding">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2">
+						<div class="full">
+							<form action="{{url('app_creationContact')}}" method="get">
+								<fieldset>
+									<input type="text" placeholder="Entrer vottre nom complet" name="nom" required/>
+									<input type="email" placeholder="Entrer votre adresse email" name="email" required/>
+									<input type="telephone" placeholder="Entrer votre téléphone" name="telephone" />
+									<input type="text" placeholder="Entrer votre sujet" name="sujet" required/>
+									<textarea placeholder="Entrer votre message" name="message" required></textarea>
+									<input type="submit" value="Submit"/>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+{% endblock %}

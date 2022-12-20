@@ -1,0 +1,68 @@
+{% extends "base.html.twig" %}
+{% block body %}	
+<!-- product section -->
+		<section class="product_section layout_padding">
+			<div class="container">
+				<div class="heading_container heading_center">
+					<h2>
+						Votre 
+						<span>Facture</span>
+					</h2>
+				</div>
+				<div class="row">
+
+					<div class="col ">
+						<table class="table table-bordered table-hover table-striped ">
+                            <tr class="bg-danger">
+                                <th>#</th>
+                                <th>Désignation</th>
+                                <th>Quantité</th>
+                                <th>Prix Unitaire</th>
+                                <th>Prix Total</th>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Roue dentée</td>
+                                <td>4</td>
+                                <td>50 euro </td>
+                                <td>370 euro</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Roue dentée</td>
+                                <td>4</td>
+                                <td>50 euro </td>
+                                <td>370 euro</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Roue dentée</td>
+                                <td>4</td>
+                                <td>50 euro </td>
+                                <td>370 euro</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Roue dentée</td>
+                                <td>4</td>
+                                <td>50 euro </td>
+                                <td>370 euro</td>
+                            </tr>
+                            <tr class="bg-danger">
+                                <td colspan="4">Grand Total </td>
+                                <td> <span class="mark bold">9.370 euro</span></td>
+                            </tr>
+                        </table>
+					</div>
+                    
+
+				</div>
+				<div class="btn-box">
+					<a href="">
+						Confirmer achat
+					</a>
+				</div>
+			</div>
+		</section>
+		<!-- end product section -->
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Achat
+{% endblock %}
+{% block innerPage %}
+	Confirmation d'achat
+{% endblock %}
+
+{% block body %}
+	<!-- product section -->
+	<section class="product_section layout_padding">
+		<div class="container">
+			<div class="row">
+				<div class="col col-12">
+					{{ form_start(form) }}
+					{{ form_widget(form) }}
+					<table class="table table-hover table- ">
+						<thead>
+							<tr class="">
+								<th>Produit</th>
+								<th>Prix</th>
+								<th>Qté</th>
+								<th>Total</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for ligneAchat in achat.ligneAchats %}
+								<tr>
+									<td>{{ligneAchat.produit.nom|upper}}</td>
+									<td>{{ligneAchat.produit.prixVente}}</td>
+									<td>{{ligneAchat.quantite}}</td>
+									<td>{{ligneAchat.produit.prixVente * ligneAchat.quantite }}</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="5">Votre panier est vide
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+						<tfoot>
+							<tr class="">
+								<th class="text-right" colspan="3">Grand Total
+								</th>
+								<td>
+									<span class="mark bold">{{achat.prixTotal}}
+										euro</span>
+								</td>
+							</tr>
+						</tfoot>
+					</th>
+					<td></td>
+				</th>
+			</tr>
+		</tfoot>
+	</tbody>
+</table>
+<button class="btn btn-primary ">{{ button_label|default('Confirmer achat ') }}</button>
+{{ form_end(form) }}
+
+<a href="{{url('app_panier')}}" class="btn btn-block btn-success">
+	Retour au panier</a>
+<a href="{{ path('app_achat_index') }}">back to list</a>
+</div></div></div></section>
+{% endblock %}

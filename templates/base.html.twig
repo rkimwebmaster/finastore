@@ -1,10 +1,37 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="fr">
+<!--<![endif]-->
+
+<head>
+  <!-- =====  BASIC PAGE NEEDS  ===== -->
+  <meta charset="utf-8">
+  <title>{% block title %}Welcome!{% endblock %} WebtroNix-WebtronBlue </title>
+  <!-- =====  SEO MATE  ===== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="distribution" content="global">
+  <meta name="revisit-after" content="2 Days">
+  <meta name="robots" content="ALL">
+  <meta name="rating" content="8 YEARS">
+  <meta name="Language" content="en-us">
+  <meta name="GOOGLEBOT" content="NOARCHIVE">
+  <!-- =====  MOBILE SPECIFICATION  ===== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="viewport" content="width=device-width">
+  <!-- =====  CSS  ===== -->
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+  <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+  <link rel="shortcut icon" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
             {{ encore_entry_link_tags('app') }}
         {% endblock %}
@@ -12,8 +39,76 @@
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+</head>
+
+<body>
+  {{ include ("_partials/_header.html.twig") }}
+  {# {{ include ("_partials/_banner.html.twig") }} #}
+
+  
+    <!-- =====  CONTAINER START  ===== -->
+    <div class="container mt_30">
+      <div class="row ">
+        {{ include ("_partials/_ariane.html.twig") }}
+
+        <div id="column-left" class="col-sm-4 col-lg-3 hidden-xs">
+            {{ include ("_partials/_categorieGauche.html.twig") }}
+        </div>
+        
+        <div class="col-sm-8 col-lg-9 mtb_20">
+
+        {% block body %}
+          <!-- contact  -->
+          <div class="row">
+
+            <div class="col-md-4 col-xs-12 contact">
+                
+                {% block principalGauche %}
+                {{include('_partials/_principalGauche.html.twig') }}
+                {% endblock %}
+
+            </div>
+
+            <div class="col-md-8 col-xs-12 contact-form mb_50">
+                
+                {% block principalDroit %}
+                {{include('_partials/_principalDroit.html.twig') }}
+                {% endblock %}
+
+            </div>
+          </div>
+          <!-- map  -->
+          <div class="row">
+
+            <div class="col-xs-12 map mb_80">
+              <div id="map"></div>
+            </div>
+
+          </div>
+        {% endblock %}
+
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+  <!-- Single Blog  -->
+  <!-- End Blog   -->
+  <!-- =====  CONTAINER END  ===== -->
+
+  {% include("_partials/_footer.html.twig") %}
+
+  <script src="js/jQuery_v3.1.1.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.magnific-popup.js"></script>
+  <script src="js/custom.js"></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT3mI0RI16q19Oxv93gSxN0cF0wfxWN6w">
+  </script>
+  <script src="js/map.js"></script>
+  <script src="js/mail.js"></script>
+</body>
+
 </html>

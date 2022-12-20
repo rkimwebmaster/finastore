@@ -1,0 +1,90 @@
+{% extends "base.html.twig" %}
+{% block innerPage %}
+	Votre panier
+{% endblock %}
+
+{% block body %}
+	<!-- product section -->
+	<section class="product_section layout_padding">
+		<div
+			class="container">
+			{# <div class="heading_container heading_center">
+														<h2>
+															Votre 
+															<span>panier</span>
+														</h2>
+													</div> #}
+			<div class="row">
+
+				<div class="col ">
+					<table class="table table-hover table- ">
+						<thead>
+							<tr class="">
+								<th>Produit</th>
+								<th>Prix</th>
+								<th>Qté</th>
+								<th>Total</th>
+								<th>Action
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for element in dataPanier %}
+								<tr>
+									<td>{{element.produit.nom|upper}}</td>
+									<td>{{element.produit.prixVente}}</td>
+									<td>{{element.quantite}}</td>
+									<td>{{element.produit.prixVente * element.quantite }}</td>
+									<td>
+										<a href="{{url('app_panier_add',{'id': element.produit.id })}}" class="btn-sm btn btn-success" title="Augmenter quantité">
+											<span class="fa fa-search-plus"></span>
+										</a>
+										<a class="btn btn-primary btn-sm  ">
+											<span class="fa fa-search-minus"></span>
+										</a>
+										<a class="btn btn-danger btn-sm ">
+											<span class="fa fa-times-circle"></span>
+										</a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="5">Votre panier est vide
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+						<tfoot>
+							<tr class="">
+								<th class="text-right" colspan="3">Grand Total
+								</th>
+								<td>
+									<span class="mark bold">{{total}}
+										euro</span>
+								</td>
+							</tr>
+						</tfoot>
+					</th>
+					<td>
+						<a href="{{url('app_panier_delete_all')}}" class="btn btn-block btn-success">
+							Supprimer le panier</a>
+					</td>
+				</th>
+			</tr>
+		</tfoot>
+	</tbody>
+</table></div></div>{% if app.user %}<div class="btn-box">
+<a href="{{url('app_achat_new')}}">
+	Confirmer achat
+</a></div>{% else %}
+<div class="btn-box">
+<a href="{{url('app_achat_new')}}" data-toggle="modal" data-target="#connect">
+	Connectez-vous
+</a>
+</div>
+<div class="btn-box">
+<a href="{{url('app_achat_new')}}" data-toggle="modal" data-target="#account">
+	Créez un compte
+</a></div>{# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+	Open modal
+	</button> #}{% endif %}</div></section><!-- end product section -->{% endblock %}

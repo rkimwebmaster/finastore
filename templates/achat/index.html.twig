@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Achat index
+{% endblock %}
+{% block innerPage %}
+	Liste de mes achats 
+{% endblock %}
+{% block body %}
+	<section class="product_section layout_padding">
+		<div class="container">
+			<div class="row">
+				<div class="col col-12">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Date Achat</th>
+								<th>Prix Total</th>
+								<th>Numéro Reference</th>
+								<th>Etat</th>
+								<th>actions</th>
+							</tr>
+						</thead>
+                        <tfoot>
+							<tr>
+								<th>#</th>
+								<th>Date Achat</th>
+								<th>Prix Total</th>
+								<th>Numéro Reference</th>
+								<th>Etat</th>
+								<th>actions</th>
+							</tr>
+						</tfoot>
+						<tbody>
+							{% for achat in achats %}
+								<tr>
+									<td>{{ loop.index }}</td>
+									<td>{{ achat.dateAchat ? achat.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
+									<td>{{ achat.prixTotal }}</td>
+									<td>{{ achat.numeroReference }}</td>
+									<td><span class="badge badge-info">En cours </span></td>
+									<td>
+										<a class="btn btn-default" href="{{ path('app_achat_show', {'id': achat.id}) }}"><span class="fa fa-search-plus"></span></a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td class="text-warning" colspan="6">Vous n'avez pas encore effectuer des achats sur notre plateforme. </td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+{% endblock %}
