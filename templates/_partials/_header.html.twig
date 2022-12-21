@@ -8,24 +8,15 @@
           <div class="row">
             <div class="col-xs-12 col-sm-4">
               <div class="header-top-left">
-                <div class="contact"><span class="hidden-xs hidden-sm hidden-md">Days a week from 9:00 am to 7:00 pm</span></div>
+                <div class="contact"><span class="hidden-xs hidden-sm hidden-md">Livraison chaque jour de 8 AM à 6 PM </span></div>
               </div>
             </div>
             <div class="col-xs-12 col-sm-8">
               <ul class="header-top-right text-right">
-                <li class="account"><a href="login.html">My Account</a></li>
-                <li class="language dropdown"> <span class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Language <span class="caret"></span> </span>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="#">English</a></li>
-                    <li><a href="#">French</a></li>
-                    <li><a href="#">German</a></li>
-                  </ul>
-                </li>
-                <li class="currency dropdown"> <span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Currency <span class="caret"></span> </span>
+                <li class="account"><a href="{{url('app_login')}}">Mon compte </a></li>
+                <li class="currency dropdown"> <span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Bonjour Mickaêl <span class="caret"></span> </span>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
-                    <li><a href="#">€ Euro</a></li>
-                    <li><a href="#">£ Pound Sterling</a></li>
-                    <li><a href="#">$ US Dollar</a></li>
+                    <li><a href="{{url('app_logout')}}">Déconnexion</a></li>
                   </ul>
                 </li>
               </ul>
@@ -38,7 +29,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-4">
               <div class="main-search mt_40">
-                <input id="search-input" name="search" value="" placeholder="Search" class="form-control input-lg" autocomplete="off" type="text">
+                <input id="search-input" name="search" value="" placeholder="Produit puis entrer" class="form-control input-lg" autocomplete="off" type="text">
                 <span class="input-group-btn">
               <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
               </span> </div>
@@ -46,7 +37,7 @@
             <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="themini" src="images/logo2.png"> </a> </div>
             <div class="col-xs-6 col-sm-4 shopcart">
               <div id="cart" class="btn-group btn-block mtb_40">
-                <button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">Shopping cart</span><span id="cart-total">items (0)</span> </button>
+                <button type="button" class="btn" data-target="{{url("app_panier")}}" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">Mon panier</span><span id="cart-total">items (0)</span> </button>
               </div>
               <div id="cart-dropdown" class="cart-menu collapse">
                 <ul>
@@ -109,8 +100,8 @@
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"> <span class="i-bar"><i class="fa fa-bars"></i></span></button>
             <div class="collapse navbar-collapse js-navbar-collapse">
               <ul id="menu" class="nav navbar-nav">
-                <li> <a href="index.html">Home</a></li>
-                <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Collection </a>
+                <li> <a href="{{url("app_accueil")}}">Accueil</a></li>
+                <li class="dropdown mega-dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits </a>
                   <ul class="dropdown-menu mega-dropdown-menu row">
                     <li class="col-md-3">
                       <ul>
@@ -166,9 +157,7 @@
                     </li>
                   </ul>
                 </li>
-                <li> <a href="category_page.html">Shop</a></li>
-                <li> <a href="blog_page.html">Blog</a></li>
-                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
+                <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services </a>
                   <ul class="dropdown-menu">
                     <li> <a href="cart_page.html">Cart</a></li>
                     <li> <a href="checkout_page.html">Checkout</a></li>
@@ -176,8 +165,8 @@
                     <li> <a href="single_blog.html">Single Post</a></li>
                   </ul>
                 </li>
-                <li> <a href="about.html">About us</a></li>
-                <li> <a href="contact_us.html">Contact us</a></li>
+                <li> <a href="{{url("app_qsn")}}">Qui sommes-nous?</a></li>
+                <li> <a href="{{url("app_contact")}}">Nous contacter</a></li>
               </ul>
             </div>
             <!-- /.nav-collapse -->

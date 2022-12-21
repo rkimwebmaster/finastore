@@ -44,34 +44,17 @@
 <body>
   {{ include ("_partials/_header.html.twig") }}
   {{ include ("_partials/_banner.html.twig") }}
+
   
     <!-- =====  CONTAINER START  ===== -->
     <div class="container mt_30">
       <div class="row ">
-        <div id="column-left" class="col-sm-4 col-lg-3 hidden-xs">
-            {{ include ("_partials/_categorieGauche.html.twig") }}
-        </div>
-        
-        <div class="col-sm-8 col-lg-9 mtb_20">
+        <div id="column-left" class="col-12 ">
 
-        {% block body %}
-          <!-- contact  -->
-          <div class="row">
-
-            <div class="col-md-4 col-xs-12 contact">
+        {# {% block body %} #}
+          
+                {{ include ("_partials/_produits.html.twig") }}
                 
-                {% block principalGauche %}
-                {{include('_partials/_principalGauche.html.twig') }}
-                {% endblock %}
-
-            </div>
-
-            <div class="col-md-8 col-xs-12 contact-form mb_50">
-                
-                {% block principalDroit %}
-                {{include('_partials/_principalDroit.html.twig') }}
-                {% endblock %}
-
             </div>
           </div>
           <!-- map  -->
@@ -82,7 +65,7 @@
             </div>
 
           </div>
-        {% endblock %}
+        {# {% endblock %} #}
 
         </div>
 
