@@ -37,7 +37,7 @@
             <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="themini" src="images/logo2.png"> </a> </div>
             <div class="col-xs-6 col-sm-4 shopcart">
               <div id="cart" class="btn-group btn-block mtb_40">
-                <button type="button" class="btn" data-target="{{url("app_panier")}}" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">Mon panier</span><span id="cart-total">items (0)</span> </button>
+                <button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">Mon panier</span><span id="cart-total">items (0)</span> </button>
               </div>
               <div id="cart-dropdown" class="cart-menu collapse">
                 <ul>
@@ -65,7 +65,7 @@
                     <table class="table">
                       <tbody>
                         <tr>
-                          <td class="text-right"><strong>Sub-Total</strong></td>
+                          <td class="text-right"><strong>Sous-total</strong></td>
                           <td class="text-right">$2,100.00</td>
                         </tr>
                         <tr>
@@ -84,10 +84,10 @@
                     </table>
                   </li>
                   <li>
-                    <form action="cart_page.html">
-                      <input class="btn pull-left mt_10" value="View cart" type="submit">
+                    <form action="{{url("app_panier")}}">
+                      <input title="Voir mon panier"  class="btn pull-left mt_10" value="Panier" type="submit">
                     </form>
-                    <form action="checkout_page.html">
+                    <form action="{{url("app_panier")}}">
                       <input class="btn pull-right mt_10" value="Checkout" type="submit">
                     </form>
                   </li>
@@ -105,49 +105,49 @@
                   <ul class="dropdown-menu mega-dropdown-menu row">
                     <li class="col-md-3">
                       <ul>
-                        <li class="dropdown-header">Women's</li>
+                        <li class="dropdown-header">Catégorie 1</li>
                         <li><a href="#">Unique Features</a></li>
                         <li><a href="#">Image Responsive</a></li>
                         <li><a href="#">Auto Carousel</a></li>
                         <li><a href="#">Newsletter Form</a></li>
                         <li><a href="#">Four columns</a></li>
                         <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Good Typography</a></li>
+                        <li><a href="{{url('app_produits')}}">Tous les produits</a></li>
                       </ul>
                     </li>
                     <li class="col-md-3">
                       <ul>
-                        <li class="dropdown-header">Man's</li>
+                        <li class="dropdown-header">Catégorie 2</li>
                         <li><a href="#">Unique Features</a></li>
                         <li><a href="#">Image Responsive</a></li>
                         <li><a href="#">Four columns</a></li>
                         <li><a href="#">Auto Carousel</a></li>
                         <li><a href="#">Newsletter Form</a></li>
                         <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Good Typography</a></li>
+                        <li><a href="{{url('app_produits')}}">Tous les produits</a></li>
                       </ul>
                     </li>
                     <li class="col-md-3">
                       <ul>
-                        <li class="dropdown-header">Children's</li>
+                        <li class="dropdown-header">Categorie 3</li>
                         <li><a href="#">Unique Features</a></li>
                         <li><a href="#">Four columns</a></li>
                         <li><a href="#">Image Responsive</a></li>
                         <li><a href="#">Auto Carousel</a></li>
                         <li><a href="#">Newsletter Form</a></li>
                         <li><a href="#">Four columns</a></li>
-                        <li><a href="#">Good Typography</a></li>
+                        <li><a href="{{url('app_produits')}}">Tous les produits</a></li>
                       </ul>
                     </li>
                     <li class="col-md-3">
                       <ul>
                         <li id="myCarousel" class="carousel slide" data-ride="carousel">
                           <div class="carousel-inner">
-                            <div class="item active"> <a href="#"><img src="images/menu-banner1.jpg" class="img-responsive" alt="Banner1"></a></div>
+                            <div class="item active"> <a href="#"><img src="{{asset('images/menu-banner1.jpg')}}" class="img-responsive" alt="Banner1"></a></div>
                             <!-- End Item -->
-                            <div class="item"> <a href="#"><img src="images/menu-banner2.jpg" class="img-responsive" alt="Banner1"></a></div>
+                            <div class="item"> <a href="#"><img src="{{asset('images/menu-banner2.jpg')}}" class="img-responsive" alt="Banner1"></a></div>
                             <!-- End Item -->
-                            <div class="item"> <a href="#"><img src="images/menu-banner3.jpg" class="img-responsive" alt="Banner1"></a></div>
+                            <div class="item"> <a href="#"><img src="{{asset('images/menu-banner3.jpg')}}" class="img-responsive" alt="Banner1"></a></div>
                             <!-- End Item -->
                           </div>
                           <!-- End Carousel Inner -->
@@ -159,10 +159,10 @@
                 </li>
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services </a>
                   <ul class="dropdown-menu">
-                    <li> <a href="cart_page.html">Cart</a></li>
-                    <li> <a href="checkout_page.html">Checkout</a></li>
-                    <li> <a href="product_detail_page.html">Product Detail Page</a></li>
-                    <li> <a href="single_blog.html">Single Post</a></li>
+                    <li> <a href="{{url("app_panier")}}">Service 1 </a></li>
+                    <li> <a href="{{url("app_panier")}}">Service 2</a></li>
+                    <li> <a href="#">Service 3</a></li>
+                    <li> <a href="#">Service 4</a></li>
                   </ul>
                 </li>
                 <li> <a href="{{url("app_qsn")}}">Qui sommes-nous?</a></li>

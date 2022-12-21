@@ -1,10 +1,18 @@
             <!-- =====  BANNER STRAT  ===== -->
         <div class="col-sm-12">
           <div class="breadcrumb ptb_20">
-            <h1>Shopping Cart</h1>
+            <h1>
+            {% block ariane1 %}
+            Shopping Cart
+            {% endblock %}
+            </h1>
             <ul>
-              <li><a href="index.html">Home</a></li>
-              <li class="active">Shopping Cart</li>
+              <li><a href="index.html">Accueil</a></li>
+              <li class="active">
+            {% block ariane2 %}
+              Shopping Cart
+            {% endblock %}
+              </li>
             </ul>
           </div>
         </div>
