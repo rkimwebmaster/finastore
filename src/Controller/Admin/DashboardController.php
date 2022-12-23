@@ -57,6 +57,11 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Categorie::class)->setAction(Crud::PAGE_NEW),
 
             ]),
+            MenuItem::subMenu('Entreprise')->setSubItems([
+                MenuItem::linkToCrud('Liste ', 'fa fa-tags', Entreprise::class)->setAction(Crud::PAGE_INDEX),
+                MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Entreprise::class)->setAction(Crud::PAGE_NEW),
+
+            ]),
             MenuItem::subMenu('Produits')->setSubItems([
                 MenuItem::linkToCrud('Liste ', 'fa fa-tags', Produit::class)->setAction(Crud::PAGE_INDEX),
                 MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Produit::class)->setAction(Crud::PAGE_NEW),

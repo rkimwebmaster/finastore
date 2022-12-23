@@ -10,6 +10,7 @@ use App\Entity\Service;
 use App\Repository\CategorieRepository;
 use App\Repository\ContactRepository;
 use App\Repository\NewsLetterRepository;
+use App\Repository\PageLivraisonRepository;
 use App\Repository\PageQSNRepository;
 use App\Repository\PartenaireRepository;
 use App\Repository\ProduitRepository;
@@ -36,6 +37,17 @@ class AccueilController extends AbstractController
         ]);
     }
 
+    #[Route('france/produitrecherche', name: 'app_produit_recherche', methods: ['GET'])]
+    public function searchByNom(Request $request, ProduitRepository $produitRepository ): Response
+    {
+        $nom=$request->query->get('search');
+        $produits=$produitRepository->findByNom($nom);
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produits,
+        ]);
+        return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+    }
+
     #[Route('/produits', name: 'app_produits')]
     public function produits(Request $request, ProduitRepository $produitRepository): Response
     {
@@ -52,7 +64,7 @@ class AccueilController extends AbstractController
     public function arrivageProduits(ProduitRepository $produitRepository): Response
     {
         $produits = $produitRepository->findBy(['isArrivage'=>true]);
-        return $this->render('accueil/arrivages.html.twig', [
+        return $this->render('produit/index.html.twig', [
             'produits' => $produits,
         ]);
     }
@@ -63,7 +75,7 @@ class AccueilController extends AbstractController
     {
         $key=$request->get('produit');
         $produits = $produitRepository->findOneBy(['nom'=>$key]);
-        return $this->render('accueil/produits.html.twig', [
+        return $this->render('produit/index.html.twig', [
             'produits' => $produits,
         ]);
     }
@@ -72,7 +84,7 @@ class AccueilController extends AbstractController
     public function categorieProduit(Categorie $categorie): Response
     {
         $produits = $categorie->getProduits();
-        return $this->render('accueil/produits.html.twig', [
+        return $this->render('produit/index.html.twig', [
             'produits' => $produits,
         ]);
     }
@@ -83,9 +95,22 @@ class AccueilController extends AbstractController
     {
         $page=$pageQSNRepository->findOneBy([],['createdAt'=>'desc']);
         $partenaires=$partenaireRepository->findAll([],['createdAt'=>'desc']);
-        return $this->render('accueil/qsn.html.twig', [
+        return $this->render('accueil/page.html.twig', [
             'page'=>$page,
             'partenaires'=>$partenaires,
+            'titre'=> 'Qui sommes-nous ? ',
+
+        ]);
+    }
+
+    
+    #[Route('/livraison', name: 'app_livraison')]
+    public function livraison( PageLivraisonRepository $pageLivraisonRepository): Response
+    {
+        $page=$pageLivraisonRepository->findOneBy([],['createdAt'=>'desc']);
+        return $this->render('accueil/page.html.twig', [
+            'page'=>$page,
+            'titre'=> 'Conditions de Livraison',
         ]);
     }
 
@@ -106,6 +131,8 @@ class AccueilController extends AbstractController
     {
         return $this->render('accueil/services.html.twig', [
             'page' => $service,
+            'titre'=> 'Nos services ',
+
         ]);
     }
 
@@ -175,20 +202,20 @@ class AccueilController extends AbstractController
     #[Route('/garantieRemboursement', name: 'app_garantie_remboursement')]
     public function garantieRemboursement(): Response
     {
-        return $this->render('accueil/remboursement.html.twig', []);
+        return $this->render('accueil/page.html.twig', []);
     }
 
 
     #[Route('/termeConditions', name: 'app_terme_conditions')]
     public function termeConditions(): Response
     {
-        return $this->render('accueil/termeConditions.html.twig', []);
+        return $this->render('accueil/page.html.twig', []);
     }
 
 
     #[Route('/policy', name: 'app_policy')]
     public function policy(): Response
     {
-        return $this->render('accueil/policy.html.twig', []);
+        return $this->render('accueil/page.html.twig', []);
     }
 }

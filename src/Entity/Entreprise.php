@@ -38,6 +38,27 @@ class Entreprise
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $emailEntreprise = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $telephoneEntreprise = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $websiteEntreprise = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $responsable = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageHeroPrimaire = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageHeroSecondaire = null;
+
     
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -136,6 +157,90 @@ class Entreprise
     public function setLogo(string $logo): self
     {
         $this->logo = $logo;
+
+        return $this;
+    }
+
+    public function getEmailEntreprise(): ?string
+    {
+        return $this->emailEntreprise;
+    }
+
+    public function setEmailEntreprise(string $emailEntreprise): self
+    {
+        $this->emailEntreprise = $emailEntreprise;
+
+        return $this;
+    }
+
+    public function getTelephoneEntreprise(): ?string
+    {
+        return $this->telephoneEntreprise;
+    }
+
+    public function setTelephoneEntreprise(string $telephoneEntreprise): self
+    {
+        $this->telephoneEntreprise = $telephoneEntreprise;
+
+        return $this;
+    }
+
+    public function getWebsiteEntreprise(): ?string
+    {
+        return $this->websiteEntreprise;
+    }
+
+    public function setWebsiteEntreprise(string $websiteEntreprise): self
+    {
+        $this->websiteEntreprise = $websiteEntreprise;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    public function getResponsable(): ?string
+    {
+        return $this->responsable;
+    }
+
+    public function setResponsable(string $responsable): self
+    {
+        $this->responsable = $responsable;
+
+        return $this;
+    }
+
+    public function getImageHeroPrimaire(): ?string
+    {
+        return $this->imageHeroPrimaire;
+    }
+
+    public function setImageHeroPrimaire(string $imageHeroPrimaire): self
+    {
+        $this->imageHeroPrimaire = $imageHeroPrimaire;
+
+        return $this;
+    }
+
+    public function getImageHeroSecondaire(): ?string
+    {
+        return $this->imageHeroSecondaire;
+    }
+
+    public function setImageHeroSecondaire(string $imageHeroSecondaire): self
+    {
+        $this->imageHeroSecondaire = $imageHeroSecondaire;
 
         return $this;
     }

@@ -1,101 +1,131 @@
 <!-- =====  FOOTER START  ===== -->
-    <div class="footer pt_60">
-      <div class="container">
-        <div class="newsletters mt_30 mb_50">
-          <div class="row">
-            <div class="col-sm-6">
-              <div class="news-head pull-left">
-                <h2>Suivez nos actualités !</h2>
-                <div class="new-desc">Soyez les premiers à avoir les nouvelles des arrivages !</div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="news-form pull-right">
-                <form onsubmit="return validatemail();" action="{{url('app_creationNewsLetter')}}" method="get">
-                  <div class="form-group required">
-                    <input name="email" id="email" placeholder="Entrer votre e-mail" class="form-control input-lg" required="" type="email">
-                    <button type="submit" class="btn btn-default btn-lg">Souscrire</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-3 footer-block">
-            <h6 class="footer-title ptb_20">Information</h6>
-            <ul>
-              <li><a href="{{url('app_qsn')}}">A propos de nous</a></li>
-              <li><a href="{{url('app_qsn')}}">Information sur la Livraison</a></li>
-              <li><a href="{{url('app_policy')}}">Privacy Policy</a></li>
-              <li><a href="{{url('app_qsn')}}">Terms & Conditions</a></li>
-              <li><a href="{{url("app_garantie_remboursement")}}">Garantie remboursement </a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 footer-block">
-            <h6 class="footer-title ptb_20">Services</h6>
-            <ul>
-              <li><a href="#">Service 1</a></li>
-              <li><a href="#">Service 2</a></li>
-              <li><a href="#">Service 1 3</a></li>
-              <li><a href="{{url("app_login")}}">Connexion admin</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 footer-block">
-            <h6 class="footer-title ptb_20">Liens utiles </h6>
-            <ul>
-              <li><a href="{{url('app_qsn')}}">Accueil</a></li> 
-              <li><a href="{{url('app_qsn')}}">Qui sommes-nous?</a></li>
-              <li><a href="{{asset('profilefina2.pdf')}}">Notre profile</a></li>
-              <li><a href="#">Catégorie 1</a></li>
-              <li><a href="#">Catégorie 2</a></li>
-              <li><a href="#">Categorie 3</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3 footer-block">
-            <h6 class="footer-title ptb_20">Contacts</h6>
-            <ul>
-              <li>Siège social,</li>
-              <li>12345 Av. Luvua , Lubumbashi- RDC</li>
-              <li>(+243) 87 56 43 564</li>
-              <li>info@finasarl.com</li>
-              <li><a href="finasarl.com">www.finasarl.com</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom mt_60 ptb_20">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="social_icon">
-                <ul>
-                  <li><a href="{#{entreprise.facebook}#}"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="{#{entreprise.googleplus}#}"><i class="fa fa-google"></i></a></li>
-                  <li><a href="{#{entreprise.linkedin}#}"><i class="fa fa-linkedin"></i></a></li>
-                  <li><a href="{#{entreprise.twitter}#}"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="{#{entreprise.instagramme}#}"><i class="fa fa-instagram"></i></a></li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="copyright-part text-center">@ 2022 Tous droits reservés FINA SARL </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="payment-icon text-right">
-                <ul>
-                  <li><i class="fa fa-cc-paypal "></i></li>
-                  <li><i class="fa fa-cc-visa"></i></li>
-                  <li><i class="fa fa-cc-discover"></i></li>
-                  <li><i class="fa fa-cc-mastercard"></i></li>
-                  <li><i class="fa fa-cc-amex"></i></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  <!-- =====  FOOTER END  ===== -->
-  <a id="scrollup"></a>
+<div class="footer pt_60">
+	<div class="container">
+		<div class="newsletters mt_30 mb_50">
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="news-head pull-left">
+						<h2>Suivez nos actualités !</h2>
+						<div class="new-desc">Soyez les premiers à avoir les nouvelles des arrivages !</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="news-form pull-right">
+						<form onsubmit="return validatemail();" action="{{url('app_creationNewsLetter')}}" method="get">
+							<div class="form-group required">
+								<input name="email" id="email" placeholder="Entrer votre e-mail" class="form-control input-lg" required="" type="email">
+								<button type="submit" class="btn btn-default btn-lg">Souscrire</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 footer-block">
+				<h6 class="footer-title ptb_20">Information</h6>
+				<ul>
+					<li><a href="{{url('app_qsn')}}">A propos de nous</a></li>
+					<li><a href="{{url('app_livraison')}}">Information sur la Livraison</a></li>
+					<li><a href="{{url('app_policy')}}">Privacy Policy</a></li>
+					<li><a href="{{url('app_terme_conditions')}}">Terms & Conditions</a></li>
+					<li><a href="{{url("app_garantie_remboursement")}}">Garantie remboursement</a></li>
+				</ul>
+			</div>
+			<div class="col-md-3 footer-block">
+				<h6 class="footer-title ptb_20">Services</h6>
+				<ul>
+					{% if services is defined and services|length > 0 %}
+						{% for service in services %}
+							<li>
+								<a href="{{url('app_service',{id:service.id})}}">{{service}}</a>
+							</li>
+						{% endfor %}
+					{% endif %}
+					<li>
+						<a href="{{url("app_login")}}">Connexion admin</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col-md-3 footer-block">
+				<h6 class="footer-title ptb_20">Liens utiles
+				</h6>
+				<ul>
+					<li>
+						<a href="{{url('app_accueil')}}">Accueil</a>
+					</li>
+					<li>
+						<a href="{{url('app_qsn')}}">Qui sommes-nous?</a>
+					</li>
+					<li>
+						<a href="{{asset('profilefina2.pdf')}}">Notre profile</a>
+					</li>
+					{% if categories is defined and categories|length > 0 %}
+						{% for categorie in categories %}
+							<li>
+								<a href="#">{{categorie}}</a>
+							</li>
+						{% endfor %}
+					{% endif %}
 
+				</ul>
+			</div>
+			<div class="col-md-3 footer-block">
+				<h6 class="footer-title ptb_20">Contacts</h6>
+				<ul>
+					<li>Siège social,</li>
+					<li>12345 Av. Luvua , Lubumbashi- RDC</li>
+					<li>(+243) 87 56 43 564</li>
+					<li>info@finasarl.com</li>
+					<li>
+						<a href="finasarl.com">www.finasarl.com</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer-bottom mt_60 ptb_20">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="social_icon">
+						<ul>
+							<li><a href="{#{entreprise.facebook}#}"><i class="fa fa-facebook"></i></a></li>
+							<li><a href="{#{entreprise.googleplus}#}"><i class="fa fa-google"></i></a></li>
+							<li><a href="{#{entreprise.linkedin}#}"><i class="fa fa-linkedin"></i></a></li>
+							<li><a href="{#{entreprise.twitter}#}"><i class="fa fa-twitter"></i></a></li>
+							<li><a href="{#{entreprise.instagramme}#}"><i class="fa fa-instagram"></i></a></li>
+						</ul>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="copyright-part text-center">@ 2022 Tous droits reservés FINA SARL
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="payment-icon text-right">
+						<ul>
+							<li>
+								<i class="fa fa-cc-paypal "></i>
+							</li>
+							<li>
+								<i class="fa fa-cc-visa"></i>
+							</li>
+							<li>
+								<i class="fa fa-cc-discover"></i>
+							</li>
+							<li>
+								<i class="fa fa-cc-mastercard"></i>
+							</li>
+							<li>
+								<i class="fa fa-cc-amex"></i>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- =====  FOOTER END  ===== -->
+<a id="scrollup"></a>

@@ -1,0 +1,4 @@
+l'image principale du produit doit avoir la deimension 624 X 800
+l'image secondaire du produit doit avoir la dimension 624 X 800
+l'image de la zone hero donc la page d'accueil doit avoir la dimension 
+le logo doit avoir la dimension 

@@ -1,48 +1,22 @@
 <div id="category-menu" class="navbar collapse in mb_40" aria-expanded="true" style="" role="button">
 	<div class="nav-responsive">
 		<div class="heading-part">
-			<h2 class="main_title">Toutes les catégories </h2>
+			<h2 class="main_title">Toutes les catégories
+			</h2>
 		</div>
 		<ul class="nav  main-navigation collapse in">
-			<li>
-				<a href="#">Appliances</a>
-			</li>
-			<li>
-				<a href="#">Mobile Phones</a>
-			</li>
-			<li>
-				<a href="#">Tablet PC & Accessories</a>
-			</li>
-			<li>
-				<a href="#">Consumer Electronics</a>
-			</li>
-			<li>
-				<a href="#">Computers & Networking</a>
-			</li>
-			<li>
-				<a href="#">Electrical & Tools</a>
-			</li>
-			<li>
-				<a href="#">Apparel</a>
-			</li>
-			<li>
-				<a href="#">Bags & Shoes</a>
-			</li>
-			<li>
-				<a href="#">Toys & Hobbies</a>
-			</li>
-			<li>
-				<a href="#">Watches & Jewelry</a>
-			</li>
-			<li>
-				<a href="#">Home & Garden</a>
-			</li>
-			<li>
-				<a href="#">Health & Beauty</a>
-			</li>
-			<li>
-				<a href="#">Outdoors & Sports</a>
-			</li>
+			{% if categories is defined %}
+				{% for categorie in categories %}
+					<li>
+						<a href="#">{{categorie}}</a>
+					</li>
+				{% endfor %}
+			{% else %}
+				<li>
+					<a href="#">Aucune catégorie </a>
+				</li>
+			{% endif %}
+
 		</ul>
 	</div>
 </div>
