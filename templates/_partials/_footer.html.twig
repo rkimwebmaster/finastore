@@ -29,7 +29,7 @@
 					<li><a href="{{url('app_livraison')}}">Information sur la Livraison</a></li>
 					<li><a href="{{url('app_policy')}}">Privacy Policy</a></li>
 					<li><a href="{{url('app_terme_conditions')}}">Terms & Conditions</a></li>
-					<li><a href="{{url("app_garantie_remboursement")}}">Garantie remboursement</a></li>
+					<li><a href="{{url("app_garantie_remboursement")}}">Garantie Remboursement</a></li>
 				</ul>
 			</div>
 			<div class="col-md-3 footer-block">
@@ -38,7 +38,7 @@
 					{% if services is defined and services|length > 0 %}
 						{% for service in services %}
 							<li>
-								<a href="{{url('app_service',{id:service.id})}}">{{service}}</a>
+								<a href="{{url('app_service',{id:service.id})}}">{{service|title }}</a>
 							</li>
 						{% endfor %}
 					{% endif %}
@@ -63,7 +63,7 @@
 					{% if categories is defined and categories|length > 0 %}
 						{% for categorie in categories %}
 							<li>
-								<a href="#">{{categorie}}</a>
+								<a href="#">{{categorie|title }}</a>
 							</li>
 						{% endfor %}
 					{% endif %}
@@ -74,12 +74,14 @@
 				<h6 class="footer-title ptb_20">Contacts</h6>
 				<ul>
 					<li>Siège social,</li>
-					<li>12345 Av. Luvua , Lubumbashi- RDC</li>
-					<li>(+243) 87 56 43 564</li>
-					<li>info@finasarl.com</li>
+					{% if entreprise is defined %}
+					<li>{{entreprise.adresse}}</li>
+					<li>{{entreprise.telephoneEntreprise}}</li>
+					<li>{{entreprise.emailEntreprise}}</li>
 					<li>
-						<a href="finasarl.com">www.finasarl.com</a>
+						<a href="{{entreprise.websiteEntreprise}}">{{entreprise.websiteEntreprise}}</a>
 					</li>
+					{% endif %}
 				</ul>
 			</div>
 		</div>
@@ -99,7 +101,7 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="copyright-part text-center">@ 2022 Tous droits reservés FINA SARL
+					<div class="copyright-part text-center">@ 2022 Tous droits reservés {{entreprise.sigle ? entreprise.sigle : 'FINA SARL Init' }}
 					</div>
 				</div>
 				<div class="col-sm-4">

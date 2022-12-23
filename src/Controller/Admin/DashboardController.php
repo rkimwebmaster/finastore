@@ -51,7 +51,7 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToDashboard('WebSite', 'fa fa-home'),
+            MenuItem::linkToDashboard('WebSite', 'fa fa-home')->setLinkTarget('app_accueil'),
 
             MenuItem::section('Configuration', 'fa fa-search-plus'),
             MenuItem::subMenu('Entreprise')->setSubItems([

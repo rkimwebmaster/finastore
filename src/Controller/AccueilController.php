@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Categorie;
 use App\Entity\Contact;
 use App\Entity\NewsLetter;
+use App\Entity\PageTermCondition;
 use App\Entity\Produit;
 use App\Entity\Service;
 use App\Repository\CategorieRepository;
@@ -12,6 +13,7 @@ use App\Repository\ContactRepository;
 use App\Repository\NewsLetterRepository;
 use App\Repository\PageLivraisonRepository;
 use App\Repository\PageQSNRepository;
+use App\Repository\PageTermConditionRepository;
 use App\Repository\PartenaireRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\ServiceRepository;
@@ -207,9 +209,12 @@ class AccueilController extends AbstractController
 
 
     #[Route('/termeConditions', name: 'app_terme_conditions')]
-    public function termeConditions(): Response
+    public function termeConditions(PageTermConditionRepository $pageLivraisonRepository): Response
     {
-        return $this->render('accueil/page.html.twig', []);
+        $page=$pageLivraisonRepository->findOneBy([]);
+        return $this->render('accueil/page.html.twig', [
+            'page'=>$page,
+        ]);
     }
 
 

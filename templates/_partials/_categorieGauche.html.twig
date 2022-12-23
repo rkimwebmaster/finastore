@@ -8,7 +8,7 @@
 			{% if categories is defined %}
 				{% for categorie in categories %}
 					<li>
-						<a href="#">{{categorie}}</a>
+						<a href="#">{{categorie|title}}</a>
 					</li>
 				{% endfor %}
 			{% else %}

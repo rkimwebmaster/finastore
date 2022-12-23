@@ -44,14 +44,14 @@
 				<div class="row">
 					<div class="col-xs-12 col-sm-4">
 						<div class="main-search mt_40">
-              <form class="form-inline" action="{{url('app_produit_recherche')}}" method="get" >
-							<input id="search-input" name="search" value="" placeholder="Produit puis entrer" class="form-control input-lg" autocomplete="off" type="text">
-							<span class="input-group-btn">
-								<button type="button" class="btn btn-default btn-lg">
-									<i class="fa fa-search"></i>
-								</button>
-							</span>
-              </form>
+							<form class="form-inline" action="{{url('app_produit_recherche')}}" method="get">
+								<input id="search-input" name="search" value="" placeholder="Produit puis entrer" class="form-control input-lg" autocomplete="off" type="text">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default btn-lg">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</form>
 						</div>
 					</div>
 					<div class="navbar-header col-xs-6 col-sm-4">
@@ -162,84 +162,25 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits
 								</a>
 								<ul class="dropdown-menu mega-dropdown-menu row">
-									<li class="col-md-3">
-										<ul>
-											<li class="dropdown-header">Catégorie 1</li>
-											<li>
-												<a href="#">Unique Features</a>
+									{% if categories is defined %}
+										{% for categorie in categories %}
+											<li class="col-md-3 ">
+												<ul>
+													<li class="dropdown-header">{{categorie|title }}</li>
+													{% for produit in categorie.produits %}
+														<li>
+															<a href="{{url('product_view',{id: produit.id })}}">{{produit|title }}</a>
+														</li>
+													{% endfor %}
+													<li>
+														<a href="{{url('app_produit_index')}}">Tous les produits</a>
+													</li>
+												</ul>
+												<br/>
 											</li>
-											<li>
-												<a href="#">Image Responsive</a>
-											</li>
-											<li>
-												<a href="#">Auto Carousel</a>
-											</li>
-											<li>
-												<a href="#">Newsletter Form</a>
-											</li>
-											<li>
-												<a href="#">Four columns</a>
-											</li>
-											<li>
-												<a href="#">Four columns</a>
-											</li>
-											<li>
-												<a href="{{url('app_produits')}}">Tous les produits</a>
-											</li>
-										</ul>
-									</li>
-									<li class="col-md-3">
-										<ul>
-											<li class="dropdown-header">Catégorie 2</li>
-											<li>
-												<a href="#">Unique Features</a>
-											</li>
-											<li>
-												<a href="#">Image Responsive</a>
-											</li>
-											<li>
-												<a href="#">Four columns</a>
-											</li>
-											<li>
-												<a href="#">Auto Carousel</a>
-											</li>
-											<li>
-												<a href="#">Newsletter Form</a>
-											</li>
-											<li>
-												<a href="#">Four columns</a>
-											</li>
-											<li>
-												<a href="{{url('app_produits')}}">Tous les produits</a>
-											</li>
-										</ul>
-									</li>
-									<li class="col-md-3">
-										<ul>
-											<li class="dropdown-header">Categorie 3</li>
-											<li>
-												<a href="#">Unique Features</a>
-											</li>
-											<li>
-												<a href="#">Four columns</a>
-											</li>
-											<li>
-												<a href="#">Image Responsive</a>
-											</li>
-											<li>
-												<a href="#">Auto Carousel</a>
-											</li>
-											<li>
-												<a href="#">Newsletter Form</a>
-											</li>
-											<li>
-												<a href="#">Four columns</a>
-											</li>
-											<li>
-												<a href="{{url('app_produits')}}">Tous les produits</a>
-											</li>
-										</ul>
-									</li>
+										{% endfor %}
+									{% endif %}
+
 									<li class="col-md-3">
 										<ul>
 											<li id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -268,19 +209,13 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Services
 								</a>
 								<ul class="dropdown-menu">
-									<li>
-										<a href="{{url("cart_index")}}">Service 1
-										</a>
-									</li>
-									<li>
-										<a href="{{url("cart_index")}}">Service 2</a>
-									</li>
-									<li>
-										<a href="#">Service 3</a>
-									</li>
-									<li>
-										<a href="#">Service 4</a>
-									</li>
+									{% if services is defined %}
+										{% for service in services %}
+											<li>
+												<a href="{{url("app_service", {id: service.id })}}">{{ service|title  }}</a>
+											</li>
+										{% endfor %}
+									{% endif %}
 								</ul>
 							</li>
 							<li>

@@ -67,6 +67,11 @@ class Produit
     #[ORM\Column]
     private ?bool $isSolde = null;
 
+    public function __toString()
+    {
+        return $this->nom;
+    }
+
     
     public function getCreatedAt(): ?\DateTimeImmutable
     {

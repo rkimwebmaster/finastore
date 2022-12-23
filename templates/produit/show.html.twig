@@ -3,7 +3,7 @@
 {% block title %}Produit{% endblock %}
 
 {% block body %}
-    <h1>{{ produit.nom }}</h1>
+    <h1>{{ produit.nom|title }}</h1>
 
     <table class="table">
         <tbody>
@@ -20,7 +20,7 @@
                 <td>{{ produit.prixVente }}</td>
             </tr>
             <tr>
-                <th>QteStock</th>
+                <th>Qté Stock</th>
                 <td>{{ produit.qteStock }}</td>
             </tr>
             <tr>
