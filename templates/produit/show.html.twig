@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+
+{% block body %}
+    <h1>{{ produit.nom }}</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Description</th>
+                <td>{{ produit.description | raw }}</td>
+            </tr>
+            <tr>
+                <th>Vidéos </th>
+                <td>{{ produit.urlVideoYoutube }}</td>
+            </tr>
+            <tr>
+                <th>Prix </th>
+                <td>{{ produit.prixVente }}</td>
+            </tr>
+            <tr>
+                <th>QteStock</th>
+                <td>{{ produit.qteStock }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td> <span class="fa fa-circle-lg bg-danger"> </span> {{ produit.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Code</th>
+                <td>{{ produit.code }}</td>
+            </tr>
+            <tr>
+                <th>Image </th>
+                <td> <img src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" /> </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_produit_index') }}">retour à la liste</a>
+{% endblock %}

@@ -17,14 +17,17 @@ use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Routing\Annotation\Route;
 
 class AccueilController extends AbstractController
 {
     #[Route('/', name: 'app_accueil')]
     public function index(ProduitRepository $produitRepository, ServiceRepository $serviceRepository): Response
-    {
-        
+    {        
+        $session = new Session();
+        $totalItems=$session->get('totalItems', 0);
+
         $produits = $produitRepository->findAll();
         $services = $serviceRepository->findAll();
         return $this->render('accueil/index.html.twig', [

@@ -3,55 +3,59 @@
 namespace App\Controller;
 
 use App\Entity\Produit;
+use App\Service\CartTools;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PanierController extends AbstractController
 {
-    #[Route('/panier', name: 'app_panier')]
-    public function index(SessionInterface $session, ProduitRepository $produitRepository): Response
+
+    
+        /**
+     * @Route("/panier", name="cart_index")
+     */
+    public function index(ProduitRepository $produitRepository)
     {
-        $panier=$session->get('panier',[]);
-        $dataPanier=[];
-        $total=0;
-        foreach($panier as $id=>$quantite){
-            $produit=$produitRepository->find($id);
-            $dataPanier[]=[
-                'produit'=>$produit,
-                'quantite'=>$quantite,
-            ];
-            $total +=$produit->getPrixVente() * $quantite;
-        }
+        $session = new Session();
+        $cartTools= new CartTools($session, $produitRepository);
+        $totalItems=$session->get('totalItems', 0);
+        $session->set('totalItems',$cartTools->getTotalItem());
         return $this->render('panier/index.html.twig', [
-            "dataPanier"=>$dataPanier,
-            "total"=>$total,
+            'items' => $cartTools->getFullCart(),
+            'totalTVA' => $cartTools->getTotalTVA(),
+            'tva' => $cartTools->getTva(),
+            'totalItems' => $totalItems,
+            'totalTTC' => $cartTools->getTotalTTC()            
         ]);
     }
 
-    #[Route('/addProduit/{id}', name: 'app_panier_add')]
-    public function add(Produit $produit, SessionInterface $session): Response
+    /**
+     * @Route("/panier/add/{id}", name="cart_add")
+     */
+    public function add($id, ProduitRepository $produitRepository)
     {
-        $id=$produit->getId();
-        $panier=$session->get('panier',[]);
-        if(!empty($panier[$id])){
-            $panier[$id]++;
-        }else{
-            $panier[$id]=1;
-        }
-        $session->set("panier",$panier);
-        // dd($session);
-        return $this->redirectToRoute('app_panier', [], Response::HTTP_SEE_OTHER);
+        $session = new Session();
+        $cartTools= new CartTools($session, $produitRepository);
+
+        $cartTools->add($id);
+
+        return $this->redirectToRoute('app_produit_index');
     }
 
-    #[Route('/deleteAll', name: 'app_panier_delete_all')]
-    public function deleteAll(SessionInterface $session): Response
+    /**
+     * @Route("/panier/remove/{id}", name="cart_remove")
+     */
+    public function remove($id, ProduitRepository $produitRepository)
     {
-        
-        $session->set("panier",[]);
-        // dd($session);
-        return $this->redirectToRoute('app_panier', [], Response::HTTP_SEE_OTHER);
+        $session = new Session();
+        $cartTools= new CartTools($session, $produitRepository);
+
+         $cartTools->remove($id);       
+
+        return $this->redirectToRoute('cart_index');
     }
 }

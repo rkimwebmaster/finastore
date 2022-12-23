@@ -4,87 +4,75 @@
 {% endblock %}
 
 {% block body %}
-	<!-- product section -->
-	<section class="product_section layout_padding">
-		<div
-			class="container">
-			{# <div class="heading_container heading_center">
-														<h2>
-															Votre 
-															<span>panier</span>
-														</h2>
-													</div> #}
-			<div class="row">
-
-				<div class="col ">
-					<table class="table table-hover table- ">
-						<thead>
-							<tr class="">
-								<th>Produit</th>
-								<th>Prix</th>
-								<th>Qté</th>
-								<th>Total</th>
-								<th>Action
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							{% for element in dataPanier %}
-								<tr>
-									<td>{{element.produit.nom|upper}}</td>
-									<td>{{element.produit.prixVente}}</td>
-									<td>{{element.quantite}}</td>
-									<td>{{element.produit.prixVente * element.quantite }}</td>
-									<td>
-										<a href="{{url('app_panier_add',{'id': element.produit.id })}}" class="btn-sm btn btn-success" title="Augmenter quantité">
-											<span class="fa fa-search-plus"></span>
-										</a>
-										<a class="btn btn-primary btn-sm  ">
-											<span class="fa fa-search-minus"></span>
-										</a>
-										<a class="btn btn-danger btn-sm ">
-											<span class="fa fa-times-circle"></span>
-										</a>
-									</td>
-								</tr>
-							{% else %}
-								<tr>
-									<td colspan="5">Votre panier est vide
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-						<tfoot>
-							<tr class="">
-								<th class="text-right" colspan="3">Grand Total
-								</th>
-								<td>
-									<span class="mark bold">{{total}}
-										euro</span>
-								</td>
-							</tr>
-						</tfoot>
-					</th>
-					<td>
-						<a href="{{url('app_panier_delete_all')}}" class="btn btn-block btn-success">
-							Supprimer le panier</a>
+	<div class="bg-light p-3">
+		<h1>Votre panier</h1>
+	</div>
+	<div class="col-md-12">
+		{% if items | length > 0 %}
+			<table class="table table-striped border">
+				<thead>
+					<tr>
+						<th>Image</th>
+						<th>Produit</th>
+						<th class="text-center">Prix unitaire HT</th>
+						<th class="text-center">Prix unitaire TTC</th>
+						<th class="text-center">Quantité</th>
+						<th class="text-center">Total</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in items %}
+						<tr>
+							<td class="align-middle"><img class="rounded-circle" width="100" src="{#{ item.product.image }#}" alt="{{ item.product.nom }} /"></td>
+							<td class="align-middle" style="width:40%">
+								<h6>
+									<a href="{{ path('product_view', {'id': item.product.id }) }}">{{ item.product.nom }}</a>
+								</h6>
+								<p>{{ item.product.description | length > 100 ? item.product.description | slice(0,100) ~' (...)' : item.product.description }}</p>
+							</td>
+							<td class="text-center align-middle">
+								{% set calcHt = item.product.prixVente * tva / 100 %}
+								{% set priceHt = item.product.prixVente - calcHt %}
+								{{ priceHt | number_format(2, ',', '.') ~ ' €' }}</td>
+							<td class="text-center align-middle">{{ item.product.prixVente | number_format(2, ',', '.') ~ ' €' }}</td>
+							<td class="text-center align-middle">{{ item.quantity }}</td>
+							<td class="text-center align-middle">{% set priceItemTotal = item.product.prixVente * item.quantity %}
+								{{ priceItemTotal | number_format(2, ',', '.')  ~ ' €' }}
+							</td>
+							<td class="text-center align-middle">
+								<a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger btn-sm">
+									<i class="fas fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+					<tr>
+						<td colspan="5" class="text-right">TVA
+							{{ tva ~ ' %'}}
+							:
+						</td>
+						<td colspan="2">{{ totalTVA | number_format(2, ',', '.') ~ ' €' }}</td>
+					</tr>
+					<tr>
+						<td colspan="5" class="text-right">Nombre d'article dans votre panier :
+						</td>
+						<td colspan="2">{{ totalItems > 1 ? totalItems ~ ' Articles' : totalItems ~ ' Article' }}</td>
+					</tr>
+				</tbody>
+				<tr>
+					<td colspan="5" class="text-right">Total HT :
 					</td>
-				</th>
-			</tr>
-		</tfoot>
-	</tbody>
-</table></div></div>{% if app.user %}<div class="btn-box">
-<a href="{{url('app_achat_new')}}">
-	Confirmer achat
-</a></div>{% else %}
-<div class="btn-box">
-<a href="{{url('app_achat_new')}}" data-toggle="modal" data-target="#connect">
-	Connectez-vous
-</a>
-</div>
-<div class="btn-box">
-<a href="{{url('app_achat_new')}}" data-toggle="modal" data-target="#account">
-	Créez un compte
-</a></div>{# <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-	Open modal
-	</button> #}{% endif %}</div></section><!-- end product section -->{% endblock %}
+					<td colspan="2">{% set totalHT = totalTTC - totalTVA %}{{ totalHT | number_format(2, ',', '.') ~ ' €' }}</td>
+				</tr>
+				<tr>
+					<td colspan="5" class="text-right">Total TTC :
+					</td>
+					<td colspan="2">{{ totalTTC | number_format(2, ',', '.') ~ ' €' }}</td>
+				</tr>
+			</tbody>
+		</table>
+	{% else %}
+		<p>Aucun article</p>
+	{% endif %}
+</div>{% endblock %}

@@ -13,12 +13,15 @@
             </div>
             <div class="col-xs-12 col-sm-8">
               <ul class="header-top-right text-right">
-                <li class="account"><a href="{{url('app_login')}}">Mon compte </a></li>
-                <li class="currency dropdown"> <span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Bonjour Mickaêl <span class="caret"></span> </span>
+              {% if app.user %}
+                <li class="currency dropdown"> <span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Je t'aime Mickaêl <span class="caret"></span> </span>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
                     <li><a href="{{url('app_logout')}}">Déconnexion</a></li>
                   </ul>
                 </li>
+              {% else %}
+                <li class="account"><a href="{{url('app_login')}}">Mon compte </a></li>
+              {% endif %}
               </ul>
             </div>
           </div>
@@ -34,7 +37,7 @@
               <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
               </span> </div>
             </div>
-            <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="themini" src="images/logo2.png"> </a> </div>
+            <div class="navbar-header col-xs-6 col-sm-4"> <a class="navbar-brand" href="index.html"> <img alt="themini" src="{{asset('images/logo2.png')}}"> </a> </div>
             <div class="col-xs-6 col-sm-4 shopcart">
               <div id="cart" class="btn-group btn-block mtb_40">
                 <button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true"><span id="shippingcart">Mon panier</span><span id="cart-total">items (0)</span> </button>
@@ -45,14 +48,14 @@
                     <table class="table table-striped">
                       <tbody>
                         <tr>
-                          <td class="text-center"><a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a></td>
+                          <td class="text-center"><a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a></td>
                           <td class="text-left product-name"><a href="#">MacBook Pro</a> <span class="text-left price">$20.00</span>
                             <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
                           </td>
                           <td class="text-center"><a class="close-cart"><i class="fa fa-times-circle"></i></a></td>
                         </tr>
                         <tr>
-                          <td class="text-center"><a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a></td>
+                          <td class="text-center"><a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a></td>
                           <td class="text-left product-name"><a href="#">MacBook Pro</a> <span class="text-left price">$20.00</span>
                             <input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
                           </td>
@@ -84,10 +87,10 @@
                     </table>
                   </li>
                   <li>
-                    <form action="{{url("app_panier")}}">
+                    <form action="{{url("cart_index")}}">
                       <input title="Voir mon panier"  class="btn pull-left mt_10" value="Panier" type="submit">
                     </form>
-                    <form action="{{url("app_panier")}}">
+                    <form action="{{url("cart_index")}}">
                       <input class="btn pull-right mt_10" value="Checkout" type="submit">
                     </form>
                   </li>
@@ -159,8 +162,8 @@
                 </li>
                 <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services </a>
                   <ul class="dropdown-menu">
-                    <li> <a href="{{url("app_panier")}}">Service 1 </a></li>
-                    <li> <a href="{{url("app_panier")}}">Service 2</a></li>
+                    <li> <a href="{{url("cart_index")}}">Service 1 </a></li>
+                    <li> <a href="{{url("cart_index")}}">Service 2</a></li>
                     <li> <a href="#">Service 3</a></li>
                     <li> <a href="#">Service 4</a></li>
                   </ul>

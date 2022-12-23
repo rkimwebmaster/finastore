@@ -32,7 +32,7 @@ class Produit
     private Collection $categories;
 
     #[ORM\Column]
-    private ?float $prixVente = null;
+    private ?float $prixVente = 0;
 
     #[ORM\Column]
     private ?int $qteStock = null;

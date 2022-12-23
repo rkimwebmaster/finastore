@@ -7,7 +7,7 @@
 <head>
   <!-- =====  BASIC PAGE NEEDS  ===== -->
   <meta charset="utf-8">
-  <title>{% block title %}Welcome!{% endblock %} WebtroNix-WebtronBlue </title>
+  <title>{% block title %}Welcome!{% endblock %} FINA STORE </title>
   <!-- =====  SEO MATE  ===== -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="description" content="">
@@ -61,7 +61,9 @@
           <div class="row">
 
             <div class="col-xs-12 map mb_80">
-              <div id="map"></div>
+              <div id="maping">
+              {{ include ('_partials/_map.google.html.twig')}}
+              </div>
             </div>
 
           </div>
