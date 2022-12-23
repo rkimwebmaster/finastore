@@ -70,6 +70,7 @@ class Achat
         $this->dateLivraison=new \DateTimeImmutable();
         $this->dateAchat=new \DateTimeImmutable();
         $this->createdAt=new \DateTimeImmutable();
+        // dd("salut");
         $this->ligneAchats = new ArrayCollection();
         $this->isApprouve=false;
         $this->isAnnule=false;

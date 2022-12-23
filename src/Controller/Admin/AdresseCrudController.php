@@ -19,7 +19,11 @@ class AdresseCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
+            TextField::new('adresse'),
+            TextField::new('ville'),
+            TextField::new('pays'),
+            TextField::new('telephone'),
+            TextField::new('email'),
             // TextEditorField::new('description'),
         ];
     }

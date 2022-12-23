@@ -10,6 +10,8 @@ use App\Entity\Contact;
 use App\Entity\Entreprise;
 use App\Entity\MobileMoney;
 use App\Entity\NewsLetter;
+use App\Entity\PageLivraison;
+use App\Entity\PagePolicy;
 use App\Entity\PageQSN;
 use App\Entity\Partenaire;
 use App\Entity\Photo;
@@ -67,9 +69,19 @@ class DashboardController extends AbstractDashboardController
                 MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Produit::class)->setAction(Crud::PAGE_NEW),
 
             ]),
-            MenuItem::subMenu('Page Qui sommes-nous')->setSubItems([
+            MenuItem::subMenu('Page Qui Sommes-nous')->setSubItems([
                 MenuItem::linkToCrud('Liste ', 'fa fa-tags', PageQSN::class)->setAction(Crud::PAGE_INDEX),
                 MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', PageQSN::class)->setAction(Crud::PAGE_NEW),
+
+            ]),
+            MenuItem::subMenu('Page Livraison')->setSubItems([
+                MenuItem::linkToCrud('Liste ', 'fa fa-tags', PageLivraison::class)->setAction(Crud::PAGE_INDEX),
+                MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', PageLivraison::class)->setAction(Crud::PAGE_NEW),
+
+            ]),
+            MenuItem::subMenu('Page Policy')->setSubItems([
+                MenuItem::linkToCrud('Liste ', 'fa fa-tags', PagePolicy::class)->setAction(Crud::PAGE_INDEX),
+                MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', PagePolicy::class)->setAction(Crud::PAGE_NEW),
 
             ]),
             MenuItem::subMenu('Partenaires ')->setSubItems([

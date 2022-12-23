@@ -35,7 +35,7 @@ class Entreprise
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable:true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(length: 255)]
@@ -58,6 +58,10 @@ class Entreprise
 
     #[ORM\Column(length: 255)]
     private ?string $imageHeroSecondaire = null;
+
+    public function __construct(){
+        $this->createdAt=new \DateTimeImmutable();
+    }
 
     
     public function getCreatedAt(): ?\DateTimeImmutable
