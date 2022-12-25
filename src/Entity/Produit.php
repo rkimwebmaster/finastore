@@ -35,16 +35,16 @@ class Produit
     private ?float $prixVente = 0;
 
     #[ORM\Column]
-    private ?int $qteStock = null;
+    private ?int $qteStock = 10;
 
     #[ORM\Column]
-    private ?int $qteAlerte = null;
+    private ?int $qteAlerte = 10;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $couleur = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $code = null;
+    private ?string $code = "null";
 
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: LigneAchat::class)]
     private Collection $ligneAchats;
