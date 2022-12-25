@@ -28,7 +28,7 @@ class EntrepriseCrudController extends AbstractCrudController
             TextField::new('idNat')->hideOnIndex(),
             TextField::new('RCCM')->hideOnIndex(),
             TextField::new('sigle'),
-            TextField::new('logo'),
+            ImageField::new('logo')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
             DateTimeField::new('createdAt')->hideOnForm(),
             DateTimeField::new('updatedAt')->hideOnForm(),
             TextField::new('emailEntreprise'),

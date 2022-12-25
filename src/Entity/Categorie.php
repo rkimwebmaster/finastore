@@ -33,6 +33,7 @@ class Categorie
         return $this->designation;
     }
 
+
     
     public function getCreatedAt(): ?\DateTimeImmutable
     {
@@ -67,6 +68,7 @@ class Categorie
     public function __construct()
     {
         $this->produits = new ArrayCollection();
+        $this->createdAt=new \DateTimeImmutable();
     }
 
     public function getId(): ?int

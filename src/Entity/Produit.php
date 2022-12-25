@@ -103,7 +103,9 @@ class Produit
         $this->categories = new ArrayCollection();
         $this->ligneAchats = new ArrayCollection();
         $this->isArrivage=false;
+        $this->isSolde=false;
         $this->isBestSelling=false;
+        $this->createdAt=new \DateTimeImmutable();
 
     }
 
