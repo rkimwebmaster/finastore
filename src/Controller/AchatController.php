@@ -44,6 +44,7 @@ class AchatController extends AbstractController
         $email=$user->getEmail();
         $client=$clientRepository->findOneBy(['email'=>$email]);
         $achat = new Achat($client);
+        // dd($achat->getMobileMoney());
         //ici on recupere la session et on initialise les données dans l'achat 
         $panier=$session->get('panier',[]);
         $dataPanier=[];

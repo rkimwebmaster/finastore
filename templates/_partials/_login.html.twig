@@ -1,0 +1,54 @@
+	<div class="card-body">
+					{% if error %}
+						<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+					{% endif %}
+
+					{% if app.user %}
+						<div class="mb-3">
+							Vous êtes connecté en tant que
+							{{ app.user.userIdentifier }},
+							<a href="{{ path('app_logout') }}">Déconnexion</a>
+						</div>
+					{% endif %}
+					<form id="login-form"  method="post">
+						<div class="input-group mb-3">
+							<input type="email" class="form-control" placeholder="Entrer votre adresse mail ici" value="{{ last_username }}" name="email" id="inputUsername" class="form-control" autocomplete="username" required autofocus>
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-envelope"></span>
+								</div>
+							</div>
+						</div>
+						<div class="input-group mb-3">
+							<input type="password" class="form-control" placeholder="Mot de passe" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-lock"></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-8">
+								<div class="icheck-primary">
+									<input type="checkbox" id="remember" name="_remember_me">
+									<label for="remember">
+										Se souvenir de moi.
+									</label>
+								</div>
+							</div>
+							<!-- /.col -->
+							<div class="col-4">
+								<button type="submit" class="btn btn-primary btn-block">Sign in</button>
+							</div>
+							<!-- /.col -->
+						</div>
+					</form>
+					<!-- social-auth-links -->
+					
+				</div>
+				<!-- /.card-body -->
+			
+			

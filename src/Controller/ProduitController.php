@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Categorie;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\ProduitRepository;
@@ -68,16 +69,26 @@ class ProduitController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_produit_delete', methods: ['POST'])]
-    public function delete(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
+    // #[Route('/{id}', name: 'app_produit_delete', methods: ['POST'])]
+    // public function delete(Request $request, Produit $produit, EntityManagerInterface $entityManager): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
+    //         $entityManager->remove($produit);
+    //         $entityManager->flush();
+    //     }
+
+    //     return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+    // }
+
+    //cette methode doit etre reecrite afin de pouvoir filtrer par catagorie 
+    
+    #[Route('/{id}/categorie', name: 'app_categorie_show', methods: ['GET'])]
+    public function indexCategorie(Categorie $categorie): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$produit->getId(), $request->request->get('_token'))) {
-            $entityManager->remove($produit);
-            $entityManager->flush();
-        }
-
-        return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+        $produits=$categorie->getProduits();
+        return $this->render('produit/index.html.twig', [
+            'produits' => $produits,
+        ]);
     }
-
     
 }

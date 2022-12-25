@@ -16,9 +16,9 @@ class ClientType extends AbstractType
                 'disabled'=>true,
                 'help'=>"Bien retenir ce code, il vous servira dans le future.",
             ])
-            // ->add('createdAt')
             // ->add('updatedAt')
             ->add('identite', IdentiteType::class)
+            ->add('password')
             ->add('adresse', AdresseType::class)
             // ->add('utilisateur')
         ;

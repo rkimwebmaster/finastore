@@ -19,7 +19,9 @@
 						<ul class="header-top-right text-right">
 							{% if app.user %}
 								<li class="currency dropdown">
-									<span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Je t'aime Mickaêl
+									<span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+									
+									Je t'aime {{app.user}}
 										<span class="caret"></span>
 									</span>
 									<ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
@@ -61,12 +63,12 @@
 					</div>
 					<div class="col-xs-6 col-sm-4 shopcart">
 						<div id="cart" class="btn-group btn-block mtb_40">
-							<button type="button" class="btn" data-target="#cart-dropdown" data-toggle="collapse" aria-expanded="true">
+							<a  class="btn" href="{{url('cart_index')}}" data-target="#" data-toggle="collapse" aria-expanded="true">
 								<span id="shippingcart">Mon panier</span>
 								<span id="cart-total">items (0)</span>
-							</button>
+							</a>
 						</div>
-						<div id="cart-dropdown" class="cart-menu collapse">
+						{# <div id="cart-dropdown" class="cart-menu collapse">
 							<ul>
 								<li>
 									<table class="table table-striped">
@@ -143,7 +145,7 @@
 									</form>
 								</li>
 							</ul>
-						</div>
+						</div> #}
 					</div>
 				</div>
 				<nav class="navbar">

@@ -3,7 +3,7 @@
 {% block title %}Produit{% endblock %}
 
 {% block body %}
-    <h1>{{ produit.nom|title }}</h1>
+    <h1>{{ produit.nom|title }} <a class="btn btn-default" href="{{url('cart_add',{id:produit.id})}}">Ajouter au panier</a> </h1>
 
     <table class="table">
         <tbody>

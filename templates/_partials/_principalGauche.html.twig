@@ -12,19 +12,26 @@
 </div>
 <div class="Career mb_50">
 	<h5 class="capitalize mb_20">
-		<strong>FINA SARL</strong>
+		<strong>Contact whatsapp </strong>
 	</h5>
 	<div class="address">
-	Nous sommes spéciaisés dans la fouriture des matériels haut de gamme.
+	Chattez directement avec un de nos agent sur whatsapp.
 	</div>
 	<div class="email mt_10">
-		<i class="fa fa-envelope" aria-hidden="true"></i>
-		<a href="mailto:contact@finasarl.com" target="_top">contact@finasarl.com</a>
+		<i class="fa fa-whatsapp" aria-hidden="true"></i>
+		<a href="whatsapp:contact@finasarl.com" target="_top">
+		{% if entreprise is defined %}
+			{{entreprise.telephoneEntreprise}}
+		{% else %}
+			+243 97 89 24 080
+		{% endif %}
+
+		</a>
 	</div>
 </div>
 <div class="Hello mb_50">
 	<h5 class="capitalize mb_20">
-		<strong>Notre devise </strong>
+		<strong>FINA SARL </strong>
 	</h5>
 	<div class="address">Ensemble, bâtissons l'avenir de la jeunesse. </div>
 	<div class="email mt_10">

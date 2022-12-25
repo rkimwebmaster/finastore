@@ -38,6 +38,7 @@ class PanierController extends AbstractController
      */
     public function add($id, ProduitRepository $produitRepository)
     {
+        
         $session = new Session();
         $cartTools= new CartTools($session, $produitRepository);
 

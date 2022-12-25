@@ -7,59 +7,150 @@
 {% endblock %}
 
 {% block body %}
-	<!-- product section -->
-	<section class="product_section layout_padding">
-		<div class="container">
-			<div class="row">
-				<div class="col col-12">
-					{{ form_start(form) }}
-					{{ form_widget(form) }}
-					<table class="table table-hover table- ">
+	<div class="row ">
+		<div class="col-sm-12 col-12 col-md-12 col-lg-12 mtb_20">
+			<form enctype="multipart/form-data" method="post" action="#">
+				<div class="table-responsive">
+					<table class="table table-bordered">
 						<thead>
-							<tr class="">
-								<th>Produit</th>
-								<th>Prix</th>
-								<th>Qté</th>
-								<th>Total</th>
+							<tr>
+								<td class="text-center">Image</td>
+								<td class="text-left">Libéllé Produit
+								</td>
+								<td class="text-left">Model</td>
+								<td class="text-left">Quantité</td>
+								<td class="text-right">Prix unitaire
+								</td>
+								<td class="text-right">Total</td>
 							</tr>
 						</thead>
 						<tbody>
-							{% for ligneAchat in achat.ligneAchats %}
-								<tr>
-									<td>{{ligneAchat.produit.nom|upper}}</td>
-									<td>{{ligneAchat.produit.prixVente}}</td>
-									<td>{{ligneAchat.quantite}}</td>
-									<td>{{ligneAchat.produit.prixVente * ligneAchat.quantite }}</td>
-								</tr>
-							{% else %}
-								<tr>
-									<td colspan="5">Votre panier est vide
-									</td>
-								</tr>
-							{% endfor %}
-						</tbody>
-						<tfoot>
-							<tr class="">
-								<th class="text-right" colspan="3">Grand Total
-								</th>
-								<td>
-									<span class="mark bold">{{achat.prixTotal}}
-										euro</span>
+							<tr>
+								<td class="text-center">
+									<a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a>
 								</td>
+								<td class="text-left">
+									<a href="product.html">iPhone</a>
+								</td>
+								<td class="text-left">product 11</td>
+								<td class="text-left">
+									<div style="max-width: 200px;" class="input-group btn-block">
+										<input type="text" class="form-control quantity" size="1" value="1" name="quantity">
+										<span class="input-group-btn">
+											<button class="btn" title="" data-toggle="tooltip" type="submit" data-original-title="Update">
+												<i class="fa fa-refresh"></i>
+											</button>
+											<button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Remove">
+												<i class="fa fa-times-circle"></i>
+											</button>
+										</span>
+									</div>
+								</td>
+								<td class="text-right">$254.00</td>
+								<td class="text-right">$254.00</td>
 							</tr>
-						</tfoot>
-					</th>
-					<td></td>
-				</th>
-			</tr>
-		</tfoot>
-	</tbody>
-</table>
-<button class="btn btn-primary ">{{ button_label|default('Confirmer achat ') }}</button>
-{{ form_end(form) }}
+						</tbody>
+					</table>
+				</div>
+			</form>
+			<h3 class="mtb_10">Informations pour confirmation de paiement</h3>
+			<p>
+				En faisant vos achat sur notre plateforme, vous accepter les conditions de paiement et de remboursement des achats.
+			</p>
+			<div class="panel-group mt_20" id="accordion">
+				<div class="panel panel-default pull-left">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">Conditions des ventes
+								<i class="fa fa-caret-down"></i>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse">
+						<div class="panel-body">
+							<p>
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem 
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="panel panel-default pull-left">
+					<div class="panel-heading">
+						<h4 class="panel-title">
+							<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Choisir votre opérateur mobile money
+								<i class="fa fa-caret-down"></i>
+							</a>
+						</h4>
+					</div>
+					<div id="collapseOne" class="panel-collapse collapse in">
+						<div class="panel-body">
+							<form class="form-horizontal">
+								<div class="form-group required">
+									<label for="input-country" class="col-sm-4 control-label">J'envoie l'argent sur
+									</label>
+									<div class="col-sm-8">
+										<select class="form-control" id="input-country" name="country_id">
+											<option value="">
+												--- Please Select ---
+											</option>
+											{% for mobile in achat.mobileMoney %}
+											{{dump(mobile)}}
+											<option value="244">Aaland Islands</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+								<input type="button" class="btn pull-right" data-loading-text="Loading..." id="button-quote" value="Get Quotes">
+							</form>
 
-<a href="{{url('app_panier')}}" class="btn btn-block btn-success">
-	Retour au panier</a>
-<a href="{{ path('app_achat_index') }}">back to list</a>
-</div></div></div></section>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+
+			<div class="row">
+				<div class="col-sm-4 col-sm-offset-8">
+					<table class="table table-bordered">
+						<tbody>
+							<tr>
+								<td class="text-right">
+									<strong>Sous-Total:</strong>
+								</td>
+								<td class="text-right">$210.00</td>
+							</tr>
+							<tr>
+								<td class="text-right">
+									<strong>Expeditions (2.00 %):</strong>
+								</td>
+								<td class="text-right">$2.00</td>
+							</tr>
+							<tr>
+								<td class="text-right">
+									<strong>Total:</strong>
+								</td>
+								<td class="text-right">$254.00</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			<form action="{{url('app_produit_index')}}">
+				<input class="btn pull-left mt_30" type="submit" value="Retour sur les produits"/>
+			</form>
+			<form action="#">
+				<input class="btn pull-right mt_30" type="submit" value="Payer "/>
+			</form>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
