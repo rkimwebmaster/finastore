@@ -55,7 +55,7 @@ class ClientController extends AbstractController
                 return $user;
             }
             $user->setEmail($email);
-            $password = $email.$email;
+            $password = $client->getPassword();
             // dd($password);
             // encode the plain password
             $user->setPassword(
