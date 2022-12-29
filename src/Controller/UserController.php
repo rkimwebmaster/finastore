@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\ClientRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,8 +42,11 @@ class UserController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
+    public function show(User $user, ClientRepository $clientRepository): Response
     {
+        $client=$clientRepository->findOneBy(["utilisateur"=>$user]);
+        return $this->redirectToRoute('app_client_show', ["id"=>$client->getId()], Response::HTTP_SEE_OTHER);
+
         return $this->render('user/show.html.twig', [
             'user' => $user,
         ]);

@@ -34,6 +34,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $rolePrincipal = "Client du Shop";
+
     public function __toString()
     {
         $nom=explode('@', $this->email);
@@ -139,5 +142,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getRolePrincipal(): ?string
+    {
+        return $this->rolePrincipal;
+    }
+
+    public function setRolePrincipal(?string $rolePrincipal): self
+    {
+        $this->rolePrincipal = $rolePrincipal;
+
+        return $this;
     }
 }

@@ -12,148 +12,98 @@
 						<thead>
 							<tr>
 								<td class="text-center">Image</td>
-								<td class="text-left">Libéllé Produit </td>
-								<td class="text-left">Model</td>
+								<td class="text-left">Libéllé Produit
+								</td>
+								{# <td class="text-left">Model</td> #}
 								<td class="text-left">Quantité</td>
-								<td class="text-right">Prix unitaire </td>
+								<td class="text-right">Prix unitaire
+								</td>
 								<td class="text-right">Total</td>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="text-center">
-									<a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a>
-								</td>
-								<td class="text-left">
-									<a href="product.html">iPhone</a>
-								</td>
-								<td class="text-left">product 11</td>
-								<td class="text-left">
-									<div style="max-width: 200px;" class="input-group btn-block">
-										<input type="text" class="form-control quantity" disabled size="1" value="1" name="quantity">
-										<span class="input-group-btn">
-											<button class="btn" title="" data-toggle="tooltip" type="submit" data-original-title="Ajouter ">
-												<i class="fa fa-plus-circle"></i>
-											</button>
-											<button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Soustraire">
-												<i class="fa fa-minus-circle"></i>
-											</button>
-										</span>
-									</div>
-								</td>
-								<td class="text-right">$254.00</td>
-								<td class="text-right">$254.00</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									<a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a>
-								</td>
-								<td class="text-left">
-									<a href="product.html">iPhone</a>
-								</td>
-								<td class="text-left">product 11</td>
-								<td class="text-left">
-									<div style="max-width: 200px;" class="input-group btn-block">
-										<input type="text" class="form-control quantity" disabled size="1" value="1" name="quantity">
-										<span class="input-group-btn">
-											<button class="btn" title="" data-toggle="tooltip" type="submit" data-original-title="Ajouter ">
-												<i class="fa fa-plus-circle"></i>
-											</button>
-											<button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Soustraire">
-												<i class="fa fa-minus-circle"></i>
-											</button>
-										</span>
-									</div>
-								</td>
-								<td class="text-right">$254.00</td>
-								<td class="text-right">$254.00</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									<a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a>
-								</td>
-								<td class="text-left">
-									<a href="product.html">iPhone</a>
-								</td>
-								<td class="text-left">product 11</td>
-								<td class="text-left">
-									<div style="max-width: 200px;" class="input-group btn-block">
-										<input type="text" class="form-control quantity" disabled size="1" value="1" name="quantity">
-										<span class="input-group-btn">
-											<button class="btn" title="" data-toggle="tooltip" type="submit" data-original-title="Ajouter ">
-												<i class="fa fa-plus-circle"></i>
-											</button>
-											<button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Soustraire">
-												<i class="fa fa-minus-circle"></i>
-											</button>
-										</span>
-									</div>
-								</td>
-								<td class="text-right">$254.00</td>
-								<td class="text-right">$254.00</td>
-							</tr>
-							<tr>
-								<td class="text-center">
-									<a href="#"><img src="images/product/70x84.jpg" alt="iPod Classic" title="iPod Classic"></a>
-								</td>
-								<td class="text-left">
-									<a href="product.html">iPhone</a>
-								</td>
-								<td class="text-left">product 11</td>
-								<td class="text-left">
-									<div style="max-width: 200px;" class="input-group btn-block">
-										<input type="text" class="form-control quantity" disabled size="1" value="1" name="quantity">
-										<span class="input-group-btn">
-											<button class="btn" title="" data-toggle="tooltip" type="submit" data-original-title="Ajouter ">
-												<i class="fa fa-plus-circle"></i>
-											</button>
-											<button class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Soustraire">
-												<i class="fa fa-minus-circle"></i>
-											</button>
-										</span>
-									</div>
-								</td>
-								<td class="text-right">$254.00</td>
-								<td class="text-right">$254.00</td>
-							</tr>
+							{% for element in dataPanier %}
+								<tr>
+									<td class="text-center">
+										<a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a>
+									</td>
+									<td class="text-left">
+										<a href="product.html">{{element.produit.nom|upper}}</a>
+									</td>
+									{# <td class="text-left">
+									{% for categorie in element.produit.categories %}
+									{{ categorie }}
+									{% endfor %}
+									</td> #}
+									<td class="text-left">
+										<div style="max-width: 200px;" class="input-group btn-block">
+											<input type="text" class="form-control quantity" disabled size="1" value="{{element.quantite}}" name="quantity">
+											<span class="input-group-btn">
+												<a href="{{url('cart_add',{'id': element.produit.id })}}" class="btn" title="" data-toggle="tooltip" data-original-title="Ajouter ">
+													<i class="fa fa-plus-circle"></i>
+												</a>
+												<a href="{{url('cart_remove',{'id': element.produit.id })}}"  class="btn btn-danger" title="" data-toggle="tooltip" type="button" data-original-title="Soustraire">
+													<i class="fa fa-minus-circle"></i>
+												</a>
+											</span>
+										</div>
+									</td>
+									<td class="text-right">${{element.produit.prixVente }}</td>
+									<td class="text-right">${{element.produit.prixVente * element.quantite }}</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td class="text-center" colspan="5">Votre panier est vide
+									</td>
+								</tr>
+							{% endfor %}
 						</tbody>
-					</table>
-				</div>
-			</form>
-			<div class="row">
-				<div class="col-sm-4 col-sm-offset-8">
-					<table class="table table-bordered">
-						<tbody>
-							<tr>
-								<td class="text-right">
-									<strong>Sous-Total:</strong>
-								</td>
-								<td class="text-right">$210.00</td>
-							</tr>
-							<tr>
-								<td class="text-right">
-									<strong>Expeditions (2.00 %):</strong>
-								</td>
-								<td class="text-right">$2.00</td>
-							</tr>
-							<tr>
-								<td class="text-right">
-									<strong>Total:</strong>
-								</td>
-								<td class="text-right">$254.00</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
+					</tbody>
+				</table>
 			</div>
-			<form action="#">
-				<input class="btn pull-left mt_30" type="submit" value="Continuer les achats "/>
-				{# <a href="class="btn pull-left mt_30""> Continuer les achats </a> #}
-			</form>
-			<form action="#">
-				<input class="btn pull-right mt_30" type="submit" value="Confirmer achat "/>
-			</form>
+		</form>
+		<div class="row">
+			{% if dataPanier|length > 0 %}
+			<div class="col-sm-4 col-sm-offset-8">
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<td class="text-right">
+								<strong>Sous-Total:</strong>
+							</td>
+							<td class="text-right">$ {{total}}</td>
+						</tr>
+						<tr>
+							{# <td class="text-right">
+								<strong>Expeditions (2.00 %):</strong>
+							</td> #}
+							{# <td class="text-right">$ </td> #}
+						</tr>
+						<tr>
+							<td class="text-right">
+								<strong>Total:</strong>
+							</td>
+							<td class="text-right">$ {{total}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			{% endif %}
 		</div>
+		<form action="{{url('app_produit_index')}}">
+			<input
+			title="Retour sur les produits" class="btn btn-warning pull-left mt_30" type="submit" value="Continuer les achats "/>
+		{# <a href="class="btn pull-left mt_30""> Continuer les achats </a> #}
+		</form>
+		{% if dataPanier|length > 0 %}
+		<form action="{{url('app_panier_delete_all')}}">
+			<input
+			class="btn btn-danger pull-left mt_30" type="submit" value="Vider le panier  "/>
+		{# <a href="class="btn pull-left mt_30""> Continuer les achats </a> #}
+		</form>
+		<form action="{{url('app_achat_new')}}">
+			<input class="btn btn-success pull-right mt_30" type="submit" value="Confirmer achat "/>
+		</form>
+		{% endif %}
 	</div>
-</div>
-{% endblock %}
+</div></div>{% endblock %}

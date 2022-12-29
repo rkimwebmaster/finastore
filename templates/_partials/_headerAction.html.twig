@@ -1,0 +1,241 @@
+<!-- =====  LODER  ===== -->
+<div class="loder"></div>
+<div
+	class="wrapper">
+	<!-- =====  HEADER START  ===== -->
+	<header id="header">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="header-top-left">
+							<div class="contact">
+								<span class="hidden-xs hidden-sm hidden-md">Livraison chaque jour de 8 AM à 6 PM
+								</span>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-8">
+						<ul class="header-top-right text-right">
+							{% if app.user %}
+								<li class="currency dropdown">
+									<span class="dropdown-toggle" id="dropdownMenu12" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">
+									Je t'aime {{app.user|title }}
+										<span class="caret"></span>
+									</span>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenu12">
+										<li>
+											<a href="{{url('app_user_show', {id: app.user.id })}}">Mon profile </a>
+										</li>
+										<li>
+											<a href="{{url('app_achat_index')}}">Mes achats </a>
+										</li>
+										<li>
+											<a href="{{url('app_logout')}}">Déconnexion</a>
+										</li>
+									</ul>
+								</li>
+							{% else %}
+								<li class="account">
+									<a href="{{url('app_login')}}">Mon compte
+									</a>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="header">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-4">
+						<div class="main-search mt_40">
+							<form class="form-inline" action="{{url('app_produit_recherche')}}" method="get">
+								<input id="search-input" name="search" value="" placeholder="Produit puis entrer" class="form-control input-lg" autocomplete="off" type="text">
+								<span class="input-group-btn">
+									<button type="button" class="btn btn-default btn-lg">
+										<i class="fa fa-search"></i>
+									</button>
+								</span>
+							</form>
+						</div>
+					</div>
+					<div class="navbar-header col-xs-6 col-sm-4">
+						<a class="navbar-brand" href="index.html">
+							<img alt="themini" src="{{asset('images/logo2.png')}}">
+						</a>
+					</div>
+					<div class="col-xs-6 col-sm-4 shopcart">
+						<div id="cart" class="btn-group btn-block mtb_40">
+							<a  class="btn" href="{{url('cart_index')}}" data-target="#" data-toggle="collapse" aria-expanded="true">
+								<span id="shippingcart">Mon panier</span>
+								<span id="cart-total">items ({{quantiteProduits}})</span>
+							</a>
+						</div>
+						{# <div id="cart-dropdown" class="cart-menu collapse">
+							<ul>
+								<li>
+									<table class="table table-striped">
+										<tbody>
+											<tr>
+												<td class="text-center">
+													<a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a>
+												</td>
+												<td class="text-left product-name">
+													<a href="#">MacBook Pro</a>
+													<span class="text-left price">$20.00</span>
+													<input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
+												</td>
+												<td class="text-center">
+													<a class="close-cart">
+														<i class="fa fa-times-circle"></i>
+													</a>
+												</td>
+											</tr>
+											<tr>
+												<td class="text-center">
+													<a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a>
+												</td>
+												<td class="text-left product-name">
+													<a href="#">MacBook Pro</a>
+													<span class="text-left price">$20.00</span>
+													<input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
+												</td>
+												<td class="text-center">
+													<a class="close-cart">
+														<i class="fa fa-times-circle"></i>
+													</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</li>
+								<li>
+									<table class="table">
+										<tbody>
+											<tr>
+												<td class="text-right">
+													<strong>Sous-total</strong>
+												</td>
+												<td class="text-right">$2,100.00</td>
+											</tr>
+											<tr>
+												<td class="text-right">
+													<strong>Eco Tax (-2.00)</strong>
+												</td>
+												<td class="text-right">$2.00</td>
+											</tr>
+											<tr>
+												<td class="text-right">
+													<strong>VAT (20%)</strong>
+												</td>
+												<td class="text-right">$20.00</td>
+											</tr>
+											<tr>
+												<td class="text-right">
+													<strong>Total</strong>
+												</td>
+												<td class="text-right">$2,122.00</td>
+											</tr>
+										</tbody>
+									</table>
+								</li>
+								<li>
+									<form action="{{url("cart_index")}}">
+										<input title="Voir mon panier" class="btn pull-left mt_10" value="Panier" type="submit">
+									</form>
+									<form action="{{url("cart_index")}}">
+										<input class="btn pull-right mt_10" value="Checkout" type="submit">
+									</form>
+								</li>
+							</ul>
+						</div> #}
+					</div>
+				</div>
+				<nav class="navbar">
+					<p>menu</p>
+					<button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+						<span class="i-bar">
+							<i class="fa fa-bars"></i>
+						</span>
+					</button>
+					<div class="collapse navbar-collapse js-navbar-collapse">
+						<ul id="menu" class="nav navbar-nav">
+							<li>
+								<a href="{{url("app_accueil")}}">Accueil</a>
+							</li>
+							<li class="dropdown mega-dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits
+								</a>
+								<ul class="dropdown-menu mega-dropdown-menu row">
+									{% if categories is defined %}
+										{% for categorie in categories %}
+											<li class="col-md-3 ">
+												<ul>
+													<li class="dropdown-header">{{categorie|title }}</li>
+													{% for produit in categorie.produits %}
+														<li>
+															<a href="{{url('product_view',{id: produit.id })}}">{{produit|title }}</a>
+														</li>
+													{% endfor %}
+													<li>
+														<a href="{{url('app_produit_index')}}">Tous les produits</a>
+													</li>
+												</ul>
+												<br/>
+											</li>
+										{% endfor %}
+									{% endif %}
+
+									<li class="col-md-3">
+										<ul>
+											<li id="myCarousel" class="carousel slide" data-ride="carousel">
+												<div class="carousel-inner">
+													<div class="item active">
+														<a href="#"><img src="{{asset('images/menu-banner1.jpg')}}" class="img-responsive" alt="Banner1"></a>
+													</div>
+													<!-- End Item -->
+													<div class="item">
+														<a href="#"><img src="{{asset('images/menu-banner2.jpg')}}" class="img-responsive" alt="Banner1"></a>
+													</div>
+													<!-- End Item -->
+													<div class="item">
+														<a href="#"><img src="{{asset('images/menu-banner3.jpg')}}" class="img-responsive" alt="Banner1"></a>
+													</div>
+													<!-- End Item -->
+												</div>
+												<!-- End Carousel Inner -->
+											</li>
+											<!-- /.carousel -->
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Services
+								</a>
+								<ul class="dropdown-menu">
+									{% if services is defined %}
+										{% for service in services %}
+											<li>
+												<a href="{{url("app_service", {id: service.id })}}">{{ service|title  }}</a>
+											</li>
+										{% endfor %}
+									{% endif %}
+								</ul>
+							</li>
+							<li>
+								<a href="{{url("app_qsn")}}">Qui sommes-nous?</a>
+							</li>
+							<li>
+								<a href="{{url("app_contact")}}">Nous contacter</a>
+							</li>
+						</ul>
+					</div>
+					<!-- /.nav-collapse -->
+				</nav>
+			</div>
+		</div>
+	</header>
+	<!-- =====  HEADER END  ===== -->

@@ -28,6 +28,11 @@ class Identite
     #[ORM\Column(nullable:true)]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    public function __toString()
+    {
+        return (string) strtoupper($this->nom." ".$this->postnom." ".$this->prenom);
+    }
+
     public function __construct()
     {
         $this->createdAt=new \DateTimeImmutable();

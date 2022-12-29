@@ -36,27 +36,15 @@ class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             //creation du client associé 
             $email = $client->getAdresse()->getEmail();
-            // $password = $email.$email;
-            // dd($password);
-
-            // $user = $this->creationUser($client, $userPasswordHasher, $entityManager);
-            // dd($user->getPassword());
-            // if($user->getEmail()===null){
-            //     return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);
-
-            // }
-            ///// creation user 
-            $email = $client->getAdresse()->getEmail();
             $user = new User();
             $user->setRoles(['ROLE_CLIENT']);        
             $checkUser = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
             if ($checkUser) {
-                $this->addFlash('danger', 'Un utilisateur existe déja avec la même adresse mail.');
-                return $user;
+                $this->addFlash('danger', 'Un utilisateur éxiste déjà avec la même adresse mail.');
+                return $this->redirectToRoute('app_client_new', [], Response::HTTP_SEE_OTHER);
             }
             $user->setEmail($email);
             $password = $client->getPassword();
-            // dd($password);
             // encode the plain password
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
@@ -64,9 +52,6 @@ class ClientController extends AbstractController
                     $password
                 )
             );
-            // dd($user->getPassword());
-            // $entityManager->persist($user);
-            // $entityManager->flush();
             $this->addFlash('success', 'Vous êtes enregistré comme client. Login: ' . $email . ' Mot de passe : ' . $password);
             /////fin creation user 
 
@@ -75,8 +60,10 @@ class ClientController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($client);
             $entityManager->flush();
+            // dd("registration");     
 
             return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);
+            dd("france");
         }
 
         return $this->renderForm('client/new.html.twig', [
@@ -122,30 +109,5 @@ class ClientController extends AbstractController
         return $this->redirectToRoute('app_client_index', [], Response::HTTP_SEE_OTHER);
     }
 
-    private function creationUser(Client $client, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): User
-    {
-        // $email = $client->getAdresse()->getEmail();
-        // $user = new User();
-        // $user->setRoles(['ROLE_CLIENT']);        
-        // $checkUser = $entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
-        // if ($checkUser) {
-        //     $this->addFlash('danger', 'Un utilisateur existe déja avec la même adresse mail.');
-        //     return $user;
-        // }
-        // $user->setEmail($email);
-        // $password = $email.$email;
-        // dd($password);
-        // // encode the plain password
-        // $user->setPassword(
-        //     $userPasswordHasher->hashPassword(
-        //         $user,
-        //         $password
-        //     )
-        // );
-        // // dd('test');
-        // // $entityManager->persist($user);
-        // // $entityManager->flush();
-        // $this->addFlash('success', 'Vous êtes enregistré comme client. Login: ' . $email . ' Mot de passe : ' . $password);
-        // return $user;
-    }
+   
 }
