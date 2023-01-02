@@ -59,6 +59,18 @@ class Entreprise
     #[ORM\Column(length: 255)]
     private ?string $imageHeroSecondaire = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imageGauche = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageMenu1 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageMenu2 = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $imageMenu3 = null;
+
     public function __construct(){
         $this->createdAt=new \DateTimeImmutable();
     }
@@ -245,6 +257,54 @@ class Entreprise
     public function setImageHeroSecondaire(string $imageHeroSecondaire): self
     {
         $this->imageHeroSecondaire = $imageHeroSecondaire;
+
+        return $this;
+    }
+
+    public function getImageGauche(): ?string
+    {
+        return $this->imageGauche;
+    }
+
+    public function setImageGauche(?string $imageGauche): self
+    {
+        $this->imageGauche = $imageGauche;
+
+        return $this;
+    }
+
+    public function getImageMenu1(): ?string
+    {
+        return $this->imageMenu1;
+    }
+
+    public function setImageMenu1(string $imageMenu1): self
+    {
+        $this->imageMenu1 = $imageMenu1;
+
+        return $this;
+    }
+
+    public function getImageMenu2(): ?string
+    {
+        return $this->imageMenu2;
+    }
+
+    public function setImageMenu2(string $imageMenu2): self
+    {
+        $this->imageMenu2 = $imageMenu2;
+
+        return $this;
+    }
+
+    public function getImageMenu3(): ?string
+    {
+        return $this->imageMenu3;
+    }
+
+    public function setImageMenu3(string $imageMenu3): self
+    {
+        $this->imageMenu3 = $imageMenu3;
 
         return $this;
     }

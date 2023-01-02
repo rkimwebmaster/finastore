@@ -44,8 +44,8 @@ class UserController extends AbstractController
     #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user, ClientRepository $clientRepository): Response
     {
-        $client=$clientRepository->findOneBy(["utilisateur"=>$user]);
-        return $this->redirectToRoute('app_client_show', ["id"=>$client->getId()], Response::HTTP_SEE_OTHER);
+        // $client=$clientRepository->findOneBy(["utilisateur"=>$user]);
+        // return $this->redirectToRoute('app_client_show', ["id"=>$client->getId()], Response::HTTP_SEE_OTHER);
 
         return $this->render('user/show.html.twig', [
             'user' => $user,

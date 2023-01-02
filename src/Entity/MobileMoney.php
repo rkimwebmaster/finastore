@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\MobileMoneyRepository;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -36,7 +37,7 @@ class MobileMoney
 
     public function __toString()
     {
-        return $this->numero.''.$this->designation;
+        return $this->numero.' =>'.$this->designation;
     }
 
     
@@ -67,6 +68,8 @@ class MobileMoney
     public function __construct()
     {
         $this->achats = new ArrayCollection();
+        $this->createdAt=new \DateTimeImmutable();
+        $this->updatedAt= new DateTimeImmutable();
     }
 
     public function getId(): ?int

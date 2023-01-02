@@ -42,12 +42,13 @@ class IceAuthenticator extends AbstractLoginFormAuthenticator
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $firewallName): ?Response
     {
+        
         if ($targetPath = $this->getTargetPath($request->getSession(), $firewallName)) {
             return new RedirectResponse($targetPath);
         }
         // For example:
         // return new RedirectResponse($this->urlGenerator->generate('admin'));
-        return new RedirectResponse($this->urlGenerator->generate('app_produit_index'));
+        return new RedirectResponse($this->urlGenerator->generate('cart_index'));
         throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

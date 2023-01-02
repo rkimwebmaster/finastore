@@ -26,13 +26,17 @@ class PanierController extends AbstractController
         $quantiteProduits=0;
         foreach($panier as $id=>$quantite){
             $produit=$produitRepository->find($id);
-            $dataPanier[]=[
-                'produit'=>$produit,
-                'quantite'=>$quantite,
-            ];
-            $prixTotalPanier +=$produit->getPrixVente() * $quantite;
-            $quantiteProduits +=$quantite;
+            if($produit){
+                $dataPanier[]=[
+                    'produit'=>$produit,
+                    'quantite'=>$quantite,
+                ];
+                $prixTotalPanier +=$produit->getPrixVente() * $quantite;
+                $quantiteProduits +=$quantite;
+    
+            }
         }
+        return $this->redirectToRoute('app_achat_new', [], Response::HTTP_SEE_OTHER);
 
         // dd($quantiteProduits);
         return $this->render('panier/index.html.twig', [

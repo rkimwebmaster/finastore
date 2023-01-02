@@ -19,12 +19,15 @@ class HeaderController extends AbstractController
         $quantiteProduits=0;
         foreach($panier as $id=>$quantite){
             $produit=$produitRepository->find($id);
-            $dataPanier[]=[
-                'produit'=>$produit,
-                'quantite'=>$quantite,
-            ];
-            $prixTotalPanier +=$produit->getPrixVente() * $quantite;
-            $quantiteProduits +=$quantite;
+            if($produit){
+                $dataPanier[]=[
+                    'produit'=>$produit,
+                    'quantite'=>$quantite,
+                ];
+                $prixTotalPanier +=$produit->getPrixVente() * $quantite;
+                $quantiteProduits +=$quantite;
+            }
+            
         }
 
         // dd($quantiteProduits);

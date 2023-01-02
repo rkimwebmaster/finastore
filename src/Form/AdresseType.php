@@ -22,7 +22,7 @@ class AdresseType extends AbstractType
                 "attr"=>['class'=>"form-control mb-4"]
             ])
             ->add('telephone')
-            ->add('email')
+            // ->add('email')
             // ->add('createdAt')
             // ->add('updatedAt')
         ;

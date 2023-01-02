@@ -3,40 +3,241 @@
 {% block title %}Produit{% endblock %}
 
 {% block body %}
-    <h1>{{ produit.nom|title }} <a class="btn btn-default" href="{{url('cart_add',{id:produit.id})}}">Ajouter au panier</a> </h1>
+<div class="row">
+<div class="col mtb_20">
+          <div class="row mt_10 ">
+            <div class="col-md-6">
+              <div><a class="thumbnails"> <img data-name="product_image" src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" alt="" /></a></div>
+              <div id="product-thumbnail" class="owl-carousel">
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product1.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product1.jpg')}}" alt="" /></a></div>
+                </div>
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product2.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product2.jpg')}}" alt="" /></a></div>
+                </div>
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product3.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product3.jpg')}}" alt="" /></a></div>
+                </div>
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product4.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product4.jpg')}}" alt="" /></a></div>
+                </div>
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product5.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product5.jpg')}}" alt="" /></a></div>
+                </div>
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product6.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product6.jpg')}}" alt="" /></a></div>
+                </div>
+                <div class="item">
+                  <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product7.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product7.jpg')}}" alt="" /></a></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 prodetail caption product-thumb">
+              <h4 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">{{ produit.nom|title }}</a></h4>
+              <div class="rating">
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+              </div>
+              <span class="price mb_20"><span class="amount"><span class="currencySymbol">$</span> {{ produit.prixVente }}</span>
+              </span>
+              <hr>
+              <ul class="list-unstyled product_info mtb_20">
+                <li>
+                  <label>Couleur :</label>
+                  <span> <a href="#">{{ produit.couleur }}</a></span>
+                </li>
+                <li>
+                  <label>Vidéo :</label>
+                  <span> <a href="#">{{ produit.urlVideoYoutube }}</a></span>
+                </li>
+                <li>
+                  <label>Code produit:</label>
+                  <span> {{ produit.code }}</span></li>
+                <li>
+                  <label>Disponibilité:</label>
+                  <span> En Stock</span></li>
+              </ul>
+              <hr>
+              <p class="product-desc mtb_30"> 
+              {{ produit.description | raw }}
+              </p>
+              <div id="product">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="Sort-by col-md-4">
+                      <a href="{{url('cart_add',{id:produit.id})}}" id="select-by-size" class="btn btn-success">Acheter </a>
+                    </div>
+                    <div class="Color col-md-4">
+                        <a href="https://api.whatsapp.com/send?phone=243898900677" class="btn btn-success">Discuter  </a>
+                    </div>
+                    <div class="Color col-md-4">
+                        <a href="{{url('app_produit_index')}}" class="btn btn-success">Tous les produits  </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="heading-part text-center mb_10">
+                <h2 class="main_title mt_50">Autres images du produit</h2>
+              </div>
+              <div class="related_pro box">
+                <div class="product-layout  product-grid related-pro  owl-carousel mb_50 ">
+                  <div class="item">
+                    <div class="product-thumb">
+                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product7.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product7-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                        <div class="button-group text-center">
+                          <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+                          <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+                          <div class="compare"><a href="#"><span>Compare</span></a></div>
+                          <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
+                        </div>
+                      </div>
+                      <div class="caption product-detail text-center">
+                        <h6 data-name="product_name" class="product-name mt_20"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Video Recording</a></h6>
+                        <div class="rating">
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+                        </div>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="product-thumb">
+                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product8.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product8-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                        <div class="button-group text-center">
+                          <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+                          <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+                          <div class="compare"><a href="#"><span>Compare</span></a></div>
+                          <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
+                        </div>
+                      </div>
+                      <div class="caption product-detail text-center">
+                        <h6 data-name="product_name" class="product-name mt_20"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Video Recording</a></h6>
+                        <div class="rating">
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+                        </div>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="product-thumb">
+                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product9.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product9-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                        <div class="button-group text-center">
+                          <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+                          <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+                          <div class="compare"><a href="#"><span>Compare</span></a></div>
+                          <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
+                        </div>
+                      </div>
+                      <div class="caption product-detail text-center">
+                        <h6 data-name="product_name" class="product-name mt_20"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Video Recording</a></h6>
+                        <div class="rating">
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+                        </div>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="product-thumb">
+                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product10-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product10-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                        <div class="button-group text-center">
+                          <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+                          <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+                          <div class="compare"><a href="#"><span>Compare</span></a></div>
+                          <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
+                        </div>
+                      </div>
+                      <div class="caption product-detail text-center">
+                        <h6 data-name="product_name" class="product-name mt_20"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Video Recording</a></h6>
+                        <div class="rating">
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+                        </div>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="product-thumb">
+                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product1-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                        <div class="button-group text-center">
+                          <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+                          <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+                          <div class="compare"><a href="#"><span>Compare</span></a></div>
+                          <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
+                        </div>
+                      </div>
+                      <div class="caption product-detail text-center">
+                        <h6 data-name="product_name" class="product-name mt_20"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Video Recording</a></h6>
+                        <div class="rating">
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+                        </div>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <div class="product-thumb">
+                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product2.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product2-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                        <div class="button-group text-center">
+                          <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
+                          <div class="quickview"><a href="#"><span>Quick View</span></a></div>
+                          <div class="compare"><a href="#"><span>Compare</span></a></div>
+                          <div class="add-to-cart"><a href="#"><span>Add to cart</span></a></div>
+                        </div>
+                      </div>
+                      <div class="caption product-detail text-center">
+                        <h6 data-name="product_name" class="product-name mt_20"><a href="#" title="Casual Shirt With Ruffle Hem">New LCDScreen and HD Video Recording</a></h6>
+                        <div class="rating">
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
+                          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-x"></i></span>
+                        </div>
+                        <span class="price"><span class="amount"><span class="currencySymbol">$</span>70.00</span>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Description</th>
-                <td>{{ produit.description | raw }}</td>
-            </tr>
-            <tr>
-                <th>Vidéos </th>
-                <td>{{ produit.urlVideoYoutube }}</td>
-            </tr>
-            <tr>
-                <th>Prix </th>
-                <td>{{ produit.prixVente }}</td>
-            </tr>
-            <tr>
-                <th>Qté Stock</th>
-                <td>{{ produit.qteStock }}</td>
-            </tr>
-            <tr>
-                <th>Couleur</th>
-                <td> <span class="fa fa-circle-lg bg-danger"> </span> {{ produit.couleur }}</td>
-            </tr>
-            <tr>
-                <th>Code</th>
-                <td>{{ produit.code }}</td>
-            </tr>
-            <tr>
-                <th>Image </th>
-                <td> <img src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" /> </td>
-            </tr>
-        </tbody>
-    </table>
+</div>
 
-    <a href="{{ path('app_produit_index') }}">retour à la liste</a>
 {% endblock %}

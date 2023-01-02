@@ -1,4 +1,11 @@
+lors de la première initialisation du projet 
+pensez a créer les infis de l'entreprise dans paametre sur l'url admin 
+ensuite créer des categories et des produits après 
+créer un ou plusiers utilisateur admin
+
 l'image principale du produit doit avoir la deimension 624 X 800
 l'image secondaire du produit doit avoir la dimension 624 X 800
-l'image de la zone hero donc la page d'accueil doit avoir la dimension 
-le logo doit avoir la dimension 
+l'image de la zone hero donc la page d'accueil doit avoir la dimension 1903 x 650 poids < 200 Kb
+le logo doit avoir la dimension 233 X 57 
+se rassurer que les images n'ont pas un grand poids car risque d'alourdir le chargement de la page 
+le poid des images doivent etre autour de 200 Kb pour les images de produits tout en se rassurant de la qualité 

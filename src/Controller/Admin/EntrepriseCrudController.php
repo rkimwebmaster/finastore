@@ -25,9 +25,9 @@ class EntrepriseCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
+            TextField::new('sigle'),
             TextField::new('idNat')->hideOnIndex(),
             TextField::new('RCCM')->hideOnIndex(),
-            TextField::new('sigle'),
             ImageField::new('logo')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
             DateTimeField::new('createdAt')->hideOnForm(),
             DateTimeField::new('updatedAt')->hideOnForm(),
@@ -38,6 +38,10 @@ class EntrepriseCrudController extends AbstractCrudController
             TextField::new('responsable')->hideOnIndex(),
             ImageField::new('imageHeroPrimaire')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
             ImageField::new('imageHeroSecondaire')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
+            ImageField::new('imageMenu1')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
+            ImageField::new('imageMenu2')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
+            ImageField::new('imageMenu3')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
+            ImageField::new('imageGauche')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
             AssociationField::new('adresse')->renderAsEmbeddedForm(AdresseCrudController::class),
             // yield AssociationField::new('...')->renderAsEmbeddedForm(CategoryCrudController::class);
             // yield AssociationField::new('...')->renderAsNativeWidget();

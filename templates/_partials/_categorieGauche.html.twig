@@ -21,5 +21,10 @@
 	</div>
 </div>
 <div class="left_banner left-sidebar-widget mt_30 mb_40">
+{% if entreprise.imageGauche %}
+	<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageGauche)}}" alt="{{entreprise.imageGauche}}" class="img-responsive" alt="Banner1"></a>
+														{% else %}
 	<a href="#"><img src="{{asset('images/left1.jpg')}}" alt="Left Banner" class="img-responsive"/></a>
+														{% endif %}
+
 </div>

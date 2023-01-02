@@ -10,6 +10,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasher;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -26,7 +27,7 @@ class ClientController extends AbstractController
     }
 
     #[Route('/new', name: 'app_client_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
+    public function new(Request $request, SessionInterface $session, EntityManagerInterface $entityManager, UserPasswordHasherInterface $userPasswordHasher): Response
     {
         // dd("jambo");
         $client = new Client();
@@ -60,9 +61,12 @@ class ClientController extends AbstractController
             $entityManager->persist($user);
             $entityManager->persist($client);
             $entityManager->flush();
-            // dd("registration");     
-
-            return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);
+            // dd("registration");  
+            $panier = $session->get('panier', []);
+            if($panier){
+                return $this->redirectToRoute('cart_index', [], Response::HTTP_SEE_OTHER);
+            }
+            return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
             dd("france");
         }
 

@@ -43,6 +43,9 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('identite', IdentiteType::class)
+            ->add('adresse', AdresseType::class)
+
         ;
     }
 

@@ -7,6 +7,7 @@ use App\Entity\LigneAchat;
 use App\Form\AchatType;
 use App\Repository\AchatRepository;
 use App\Repository\ClientRepository;
+use App\Repository\MobileMoneyRepository;
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -29,7 +30,7 @@ class AchatController extends AbstractController
     }
 
     #[Route('/new', name: 'app_achat_new', methods: ['GET', 'POST'])]
-    public function new(SessionInterface $session,ClientRepository $clientRepository, ProduitRepository $produitRepository, Request $request, EntityManagerInterface $entityManager): Response
+    public function new(SessionInterface $session,MobileMoneyRepository $mobileMoneyRepository, ClientRepository $clientRepository, ProduitRepository $produitRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
         $user=$this->getUser();
         if(!$user){
@@ -37,13 +38,16 @@ class AchatController extends AbstractController
             return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
 
         }
-        if($this->isGranted('ROLE_ADMIN')){
-            $this->addFlash("info", "Vous êtes administrateur et non client. Créez un compte client à cet effet.");
-            return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);   
+        ///verifier que le mobile money sont déja configuré 
+        $mobileMoneys = $mobileMoneyRepository->findAll();
+        if(sizeof($mobileMoneys)==0){
+            $this->addFlash('info','Contacter pour création des mobiles money....');
+            return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);
         }
+
         $email=$user->getEmail();
         $client=$clientRepository->findOneBy(['email'=>$email]);
-        $achat = new Achat($client);
+        $achat = new Achat($user);
         // dd($achat->getMobileMoney());
         //ici on recupere la session et on initialise les données dans l'achat 
         $panier=$session->get('panier',[]);
@@ -51,16 +55,19 @@ class AchatController extends AbstractController
         $total=0;
         foreach($panier as $id=>$quantite){
             $produit=$produitRepository->find($id);
-            $dataPanier[]=[
-                'produit'=>$produit,
-                'quantite'=>$quantite,
-            ];
-            $total +=$produit->getPrixVente() * $quantite;
-            $ligneAchat= new LigneAchat();
-            $ligneAchat->setProduit($produit);
-            $ligneAchat->setQuantite($quantite);
-            $ligneAchat->setTotalLigne($quantite * $produit->getPrixVente());
-            $achat->addLigneAchat($ligneAchat);
+            if($produit){
+                $dataPanier[]=[
+                    'produit'=>$produit,
+                    'quantite'=>$quantite,
+                ];
+                $total +=$produit->getPrixVente() * $quantite;
+                $ligneAchat= new LigneAchat();
+                $ligneAchat->setProduit($produit);
+                $ligneAchat->setQuantite($quantite);
+                $ligneAchat->setTotalLigne($quantite * $produit->getPrixVente());
+                $achat->addLigneAchat($ligneAchat);    
+            }
+            
         }
         ///initialiser l objet achat 
         $achat->setPrixTotal($total);
@@ -78,6 +85,9 @@ class AchatController extends AbstractController
         }
 
         return $this->renderForm('achat/new.html.twig', [
+            'mobileMoneys' => $mobileMoneys,
+            'total' => $total,
+            'dataPanier' => $dataPanier,
             'achat' => $achat,
             'form' => $form,
         ]);

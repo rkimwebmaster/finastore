@@ -1,14 +1,14 @@
 <div class="location mb_50">
 	<h5 class="capitalize mb_20">
-		<strong>Nos adresse</strong>
+		<strong>Nos adresses</strong>
 	</h5>
 	<div class="address">Siège social
 		<br>
-		124,av. Luvua, Lubumbashi- RDC
+		{{ entreprise.adresse}}
 		<br>
 		en diagonal de la brasserie du Katanga</div>
 	<div class="call mt_10">
-		<i class="fa fa-phone" aria-hidden="true"></i>+243 96 35 678</div>
+		<i class="fa fa-phone" aria-hidden="true"></i>{{entreprise.telephoneEntreprise}}</div>
 </div>
 <div class="Career mb_50">
 	<h5 class="capitalize mb_20">
@@ -19,7 +19,7 @@
 	</div>
 	<div class="email mt_10">
 		<i class="fa fa-whatsapp" aria-hidden="true"></i>
-		<a href="whatsapp:contact@finasarl.com" target="_top">
+		<a title="Chatter sur WhatAspp"  href="https://api.whatsapp.com/send?phone=243898900677" target="_top">
 		{% if entreprise is defined %}
 			{{entreprise.telephoneEntreprise}}
 		{% else %}
@@ -31,11 +31,11 @@
 </div>
 <div class="Hello mb_50">
 	<h5 class="capitalize mb_20">
-		<strong>FINA SARL </strong>
+		<strong>{{entreprise.sigle|upper}} </strong>
 	</h5>
 	<div class="address">Ensemble, bâtissons l'avenir de la jeunesse. </div>
 	<div class="email mt_10">
 		<i class="fa fa-envelope" aria-hidden="true"></i>
-		<a href="mailto:info@finasarl.com" target="_top">info@finasarl.com</a>
+		<a href="mailto:{{entreprise.emailEntreprise}}" target="_top">{{entreprise.emailEntreprise|upper}}</a>
 	</div>
 </div>

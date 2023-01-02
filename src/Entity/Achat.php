@@ -26,9 +26,9 @@ class Achat
     #[ORM\Column]
     private ?float $prixTotal = null;
 
-    #[ORM\ManyToOne(inversedBy: 'achats')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Client $client = null;
+    // #[ORM\ManyToOne(inversedBy: 'achats')]
+    // #[ORM\JoinColumn(nullable: false)]
+    // private ?Client $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'achats')]
     #[ORM\JoinColumn(nullable: false)]
@@ -62,11 +62,15 @@ class Achat
     private Collection $ligneAchats;
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;    
+    private ?string $email = null;
 
-    public function __construct(Client $client)
+    #[ORM\ManyToOne(inversedBy: 'achats')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;    
+
+    public function __construct(User $user)
     {
-        $this->client=$client;
+        $this->user=$user;
         $this->dateLivraison=new \DateTimeImmutable();
         $this->dateAchat=new \DateTimeImmutable();
         $this->createdAt=new \DateTimeImmutable();
@@ -77,7 +81,7 @@ class Achat
         $this->isEnCours=false;
         $this->isPaye=false;
         $this->isLivre=false;
-        $this->email=$this->client->getEmail();
+        $this->email=$this->user->getEmail();
     }
 
     
@@ -146,17 +150,17 @@ class Achat
         return $this;
     }
 
-    public function getClient(): ?Client
-    {
-        return $this->client;
-    }
+    // public function getClient(): ?Client
+    // {
+    //     return $this->client;
+    // }
 
-    public function setClient(?Client $client): self
-    {
-        $this->client = $client;
+    // public function setClient(?Client $client): self
+    // {
+    //     $this->client = $client;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getMobileMoney(): ?MobileMoney
     {
@@ -280,6 +284,18 @@ class Achat
     public function setEmail(string $email): self
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

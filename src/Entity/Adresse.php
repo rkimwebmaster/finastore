@@ -6,6 +6,7 @@ use App\Repository\AdresseRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AdresseRepository::class)]
+#[ORM\HasLifecycleCallbacks()]
 class Adresse
 {
     #[ORM\Id]
@@ -22,11 +23,12 @@ class Adresse
     #[ORM\Column(length: 255)]
     private ?string $pays = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 14)]
     private ?string $telephone = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    // #[ORM\Column(length: 255)]
+    // private ?string $email = null;
+    
 
     public function __toString()
     {
@@ -91,15 +93,15 @@ class Adresse
         return $this;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+    // public function getEmail(): ?string
+    // {
+    //     return $this->email;
+    // }
 
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
+    // public function setEmail(string $email): self
+    // {
+    //     $this->email = $email;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

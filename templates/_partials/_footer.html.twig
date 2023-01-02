@@ -63,7 +63,7 @@
 					{% if categories is defined and categories|length > 0 %}
 						{% for categorie in categories %}
 							<li>
-								<a href="#">{{categorie|title }}</a>
+								<a href="{{url('app_categorie_show',{id:categorie.id})}}">{{categorie|title }}</a>
 							</li>
 						{% endfor %}
 					{% endif %}
@@ -74,7 +74,7 @@
 				<h6 class="footer-title ptb_20">Contacts</h6>
 				<ul>
 					<li>Siège social,</li>
-					{% if entreprise is defined %}
+					{% if entreprise is defined and entreprise|length > 0 %}
 					<li>{{entreprise.adresse}}</li>
 					<li>{{entreprise.telephoneEntreprise}}</li>
 					<li>{{entreprise.emailEntreprise}}</li>
@@ -101,26 +101,26 @@
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="copyright-part text-center">@ 2022 Tous droits reservés {{entreprise.sigle ? entreprise.sigle : 'FINA SARL Init' }}
+					<div class="copyright-part text-center">@ 2022 Tous droits reservés 
+					{% if entreprise is defined and entreprise | length > 0 %}
+					{{entreprise.sigle}}
+					{% endif %}
 					</div>
 				</div>
 				<div class="col-sm-4">
 					<div class="payment-icon text-right">
 						<ul>
 							<li>
-								<i class="fa fa-cc-paypal "></i>
+								<img    src="{{asset('images/mobileMoney1.png')}}" class="fa fa-cc-paypal "></i>
 							</li>
 							<li>
-								<i class="fa fa-cc-visa"></i>
+								<img    src="{{asset('images/mobileMoney2.png')}}" class="fa fa-cc-paypal "></i>
 							</li>
 							<li>
-								<i class="fa fa-cc-discover"></i>
+								<img    src="{{asset('images/mobileMoney3.png')}}" class="fa fa-cc-paypal "></i>
 							</li>
 							<li>
-								<i class="fa fa-cc-mastercard"></i>
-							</li>
-							<li>
-								<i class="fa fa-cc-amex"></i>
+								<img    src="{{asset('images/mobileMoney4.png')}}" class="fa fa-cc-paypal "></i>
 							</li>
 						</ul>
 					</div>

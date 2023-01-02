@@ -19,7 +19,7 @@ class AchatType extends AbstractType
                 'help'=>'Faites le transfert au numéro indiquez ci-dessus et recuperer le code de confirmation',
             ])
             ->add('numeroReference',null,[
-                'help'=>'Veuillez entrer le code referennce que votre opérateur mobile vous a envoyer',
+                'help'=>'Veuillez entrer le code reference (Transaction ID) que votre opérateur mobile vous a envoyer',
             ])
             // ->add('isApprouve')
             // ->add('isAnnule')

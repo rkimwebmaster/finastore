@@ -6,8 +6,8 @@
 		</div>
 	</div>
 	<div class="sort-wrapper pull-right">
-		<label class="control-label" for="input-sort">Catégorie :</label>
-		<div class="sort-inner">
+		<label class="control-label" for="input-sort">La qualité au meilleur prix </label>
+		{# <div class="sort-inner">
 			<select id="input-sort" class="form-control">
 				<option value="ASC" selected="selected">Tous</option>
 				{% for categorie in categories %}
@@ -17,7 +17,7 @@
 		</div>
 		<span>
 			<i class="fa fa-angle-down" aria-hidden="true"></i>
-		</span>
+		</span> #}
 	</div>
 </div>
 
@@ -30,10 +30,11 @@
 				<div class="image product-imageblock">
 					<a href="{{url('product_view',{id:produit.id})}}">
 						<img data-name="product_image"   src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"/>
+						
 						<img   src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" alt="{{produit.nom}}" title="{{produit.nom}}" class="img-responsive"/>
 					</a>
 					<div class="button-group text-center">
-						<div title="Détail produit"  class="quickview">
+						{# <div title="Détail produit"  class="quickview">
 							<a href="{{url('product_view',{id:produit.id})}}">
 								<span>Détail produit</span>
 							</a>
@@ -49,7 +50,7 @@
 							<a onClick="window.alert('Jambo')" href="{{url('cart_add',{id:produit.id})}}">
 								<span>Ajouter au panier</span>
 							</a>
-						</div>
+						</div> #}
 					</div>
 				</div>
 				<div class="caption product-detail text-center">
