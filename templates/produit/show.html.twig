@@ -9,7 +9,7 @@
             <div class="col-md-6">
               <div><a class="thumbnails"> <img data-name="product_image" src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" alt="" /></a></div>
               <div id="product-thumbnail" class="owl-carousel">
-                <div class="item">
+                {# <div class="item">
                   <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product1.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product1.jpg')}}" alt="" /></a></div>
                 </div>
                 <div class="item">
@@ -29,10 +29,10 @@
                 </div>
                 <div class="item">
                   <div class="image-additional"><a class="thumbnail" href="{{asset('images/product/product7.jpg')}}" data-fancybox="group1"> <img src="{{asset('images/product/product7.jpg')}}" alt="" /></a></div>
-                </div>
+                </div> #}
               </div>
             </div>
-            <div class="col-md-6 prodetail caption product-thumb">
+            <div class="col-md-6 col-offset-6 prodetail caption product-thumb">
               <h4 data-name="product_name" class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">{{ produit.nom|title }}</a></h4>
               <div class="rating">
                 <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i><i class="fa fa-star fa-stack-1x"></i></span>
@@ -74,7 +74,7 @@
                         <a href="https://api.whatsapp.com/send?phone=243898900677" class="btn btn-success">Discuter  </a>
                     </div>
                     <div class="Color col-md-4">
-                        <a href="{{url('app_produit_index')}}" class="btn btn-success">Tous les produits  </a>
+                        <a title="Tous les produits " href="{{url('app_produit_index')}}" class="btn btn-success">Produits  </a>
                     </div>
                   </div>
                 </div>
@@ -82,15 +82,18 @@
             </div>
           </div>
           <div class="row">
+            {% if produit.photos|length > 0 %}
             <div class="col-md-12">
               <div class="heading-part text-center mb_10">
-                <h2 class="main_title mt_50">Autres images du produit</h2>
+                <h2 class="main_title mt_50">Autres images du produit {{produit}}</h2>
               </div>
               <div class="related_pro box">
                 <div class="product-layout  product-grid related-pro  owl-carousel mb_50 ">
+                  {% for photo in produit.photos %}
                   <div class="item">
                     <div class="product-thumb">
-                      <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product7.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product7-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
+                      <div class="image product-imageblock">
+                       <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product7.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product7-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
                         <div class="button-group text-center">
                           <div class="wishlist"><a href="#"><span>wishlist</span></a></div>
                           <div class="quickview"><a href="#"><span>Quick View</span></a></div>
@@ -112,7 +115,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="item">
+                  {% endfor %}
+                  {# <div class="item">
                     <div class="product-thumb">
                       <div class="image product-imageblock"> <a href="product_detail_page.html"> <img data-name="product_image" src="{{asset('images/product/product8.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> <img src="{{asset('images/product/product8-1.jpg')}}" alt="iPod Classic" title="iPod Classic" class="img-responsive"> </a>
                         <div class="button-group text-center">
@@ -231,11 +235,14 @@
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </div> #}
+
                 </div>
               </div>
             </div>
+          {% endif %}
           </div>
+
         </div>
 
 </div>

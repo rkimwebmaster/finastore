@@ -51,6 +51,9 @@ class AchatController extends AbstractController
         // dd($achat->getMobileMoney());
         //ici on recupere la session et on initialise les données dans l'achat 
         $panier=$session->get('panier',[]);
+        if($panier==null){
+            return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+        }
         $dataPanier=[];
         $total=0;
         foreach($panier as $id=>$quantite){
@@ -77,6 +80,7 @@ class AchatController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $entityManager->persist($achat);
             $entityManager->flush();
             $session->set("panier",[]);

@@ -136,10 +136,10 @@
 					<div id="collapseOne" class="panel-collapse collapse in">
 						<div class="panel-body">
 							{# <form class="form-horizontal"> #}
-{{ form_start(form) }}
+<form method="post" action="{{ path('app_achat_new') }}" onsubmit="return confirm('Confirmez-vous avoir lu les conditions et vouloir faire cette achat?');">
     {{ form_widget(form) }}
     <button class="btn pull-right btn-success">{{ button_label|default('Clôturer achat') }}</button>
-{{ form_end(form) }}
+</form>
 						</div>
 					</div>
 				</div>
