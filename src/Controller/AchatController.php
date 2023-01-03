@@ -84,7 +84,7 @@ class AchatController extends AbstractController
             $entityManager->persist($achat);
             $entityManager->flush();
             $session->set("panier",[]);
-            $this->addFlash("info","Merci d'avoir effectué votre achat. Vous serz servie dans le delai.");
+            $this->addFlash("info","Merci d'avoir effectué votre achat. Vous serez servie dans le delai.");
             return $this->redirectToRoute('app_achat_index', [], Response::HTTP_SEE_OTHER);
         }
 

@@ -3,12 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\ChangePasswordFormType;
 use App\Form\UserType;
 use App\Repository\ClientRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/user')]
@@ -66,6 +68,34 @@ class UserController extends AbstractController
 
         return $this->renderForm('user/edit.html.twig', [
             'user' => $user,
+            'form' => $form,
+        ]);
+    }
+
+    
+    #[Route('/change/password', name: 'app_user_reset_password', methods: ['GET', 'POST'])]
+    public function changePassword(Request $request,UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository): Response
+    {
+        // dd("reset");
+        $form = $this->createForm(ChangePasswordFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user=$this->getUser();
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    // $form->get('plainPassword')->getData()
+                    $form->get('plainPassword')->getData()
+                )
+            );
+
+            $userRepository->save($user, true);
+
+            return $this->redirectToRoute('app_user_show', ['id'=> $user->getId()], Response::HTTP_SEE_OTHER);
+        }
+
+        return $this->renderForm('user/changePassword.html.twig', [
             'form' => $form,
         ]);
     }

@@ -34,6 +34,7 @@
     {% endif %}
 
     <a class="btn btn-primary" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier profile</a>
+    <a class="btn btn-primary pull rigth" href="{{ path('app_user_reset_password') }}">Changer mot de passe</a>
 
     {# {{ include('user/_delete_form.html.twig') }} #}
 {% endblock %}

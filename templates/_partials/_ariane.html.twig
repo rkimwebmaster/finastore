@@ -15,4 +15,16 @@
               </li>
             </ul>
           </div>
+          {% for label, flashes in app.session.flashbag.all %}
+							{% for flash in flashes %}
+								<div class="alert alert-{{ label }} alert-dismissible fade show" role="alert">
+									<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+									<strong>
+										<i class=""> 👨 </i>
+										{{ label|title }}
+										!</strong>
+									{{ flash }}
+								</div>
+							{% endfor %}
+						{% endfor %}
         </div>
