@@ -64,15 +64,16 @@ class RegistrationController extends AbstractController
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
-                    $form->get('plainPassword')->getData()
+                    $form->get('password')->getData()
                 )
             );
 
             $entityManager->persist($user);
             $entityManager->flush();
             // do anything else you need here, like send an email
+            $this->addFlash('success', 'Vous avez créez un compte admin.');
 
-            return $this->redirectToRoute('app_accueil');
+            return $this->redirectToRoute('app_register_admin');
         }
 
         return $this->render('registration/register.html.twig', [
