@@ -49,7 +49,7 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/registerAdmin', name: 'app_register_adm')]
+    #[Route('/registerAdmin', name: 'app_register_admin')]
     public function registerAdmin(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();

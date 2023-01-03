@@ -165,6 +165,20 @@
 							<li>
 								<a href="{{url("app_accueil")}}">Accueil</a>
 							</li>
+							{% if is_granted('ROLE_ADMIN') %}
+						    <li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown">DashBoard
+								</a>
+								<ul class="dropdown-menu">
+											<li>
+												<a href="#">Etat Achat</a>
+											</li>
+											<li>
+												<a href="#">Divers </a>
+											</li>
+								</ul>
+							</li>
+							{% endif %}
 							<li class="dropdown mega-dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits
 								</a>
