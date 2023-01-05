@@ -28,9 +28,6 @@ class Produit
     #[ORM\OneToMany(mappedBy: 'produit', targetEntity: Photo::class, cascade: ["persist"])]
     private Collection $photos;
 
-    #[ORM\ManyToMany(targetEntity: Categorie::class, inversedBy: 'produits')]
-    private Collection $categories;
-
     #[ORM\Column]
     private ?float $prixVente = 0;
 
@@ -67,6 +64,13 @@ class Produit
     #[ORM\Column]
     private ?bool $isSolde = null;
 
+    #[ORM\ManyToOne(inversedBy: 'produits')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Categorie $categorie = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $photoPrincipaleNoirBlanc = null;
+
     public function __toString()
     {
         return $this->nom;
@@ -100,13 +104,11 @@ class Produit
     public function __construct()
     {
         $this->photos = new ArrayCollection();
-        $this->categories = new ArrayCollection();
         $this->ligneAchats = new ArrayCollection();
         $this->isArrivage=false;
         $this->isSolde=false;
         $this->isBestSelling=false;
         $this->createdAt=new \DateTimeImmutable();
-
     }
 
     public function getId(): ?int
@@ -180,29 +182,6 @@ class Produit
         return $this;
     }
 
-    /**
-     * @return Collection<int, Categorie>
-     */
-    public function getCategories(): Collection
-    {
-        return $this->categories;
-    }
-
-    public function addCategory(Categorie $category): self
-    {
-        if (!$this->categories->contains($category)) {
-            $this->categories->add($category);
-        }
-
-        return $this;
-    }
-
-    public function removeCategory(Categorie $category): self
-    {
-        $this->categories->removeElement($category);
-
-        return $this;
-    }
 
     public function getPrixVente(): ?float
     {
@@ -353,5 +332,31 @@ class Produit
 
         return $this;
     }
+
+    public function getCategorie(): ?Categorie
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(?Categorie $categorie): self
+    {
+        $this->categorie = $categorie;
+
+        return $this;
+    }
+
+    public function getPhotoPrincipaleNoirBlanc(): ?string
+    {
+        return $this->photoPrincipaleNoirBlanc;
+    }
+
+    public function setPhotoPrincipaleNoirBlanc(string $photoPrincipaleNoirBlanc): self
+    {
+        $this->photoPrincipaleNoirBlanc = $photoPrincipaleNoirBlanc;
+
+        return $this;
+    }
+
+
 
 }

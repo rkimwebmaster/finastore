@@ -68,8 +68,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function __toString()
     {
-        $nom=explode('@', $this->email);
-        return strtoupper($nom[0]);
+        if($this->getIdentite()){
+            $nom=$this->getIdentite()->getNom();
+        }else{
+            $nom=explode('@', $this->email);
+            $nom= strtoupper($nom[0]);
+        }
+
+        return $nom;
     }
 
     public function __construct()

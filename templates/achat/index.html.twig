@@ -1,9 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Lliste des Achats
-{% endblock %}
-{% block innerPage %}
-	Liste de mes achats 
+{% block title %}Mes achats
 {% endblock %}
 {% block body %}
 			<div class="row">
@@ -16,7 +13,7 @@
 								<th>Prix Total</th>
 								<th>Numéro Reference</th>
 								<th>Etat</th>
-								<th>actions</th>
+								<th>Facture</th>
 							</tr>
 						</thead>
                         <tfoot>
@@ -38,7 +35,7 @@
 									<td>{{ achat.numeroReference }}</td>
 									<td><span class="badge badge-info">{{ achat.etat }} </span></td>
 									<td>
-										<a class="btn btn-default" href="{{ path('app_achat_show', {'id': achat.id}) }}"><span class="fa fa-search-plus"></span></a>
+										<a class="btn btn-sm btn-default" href="{{ path('app_achat_show', {'id': achat.id}) }}"><span class="fa fa-search-plus"></span></a>
 									</td>
 								</tr>
 							{% else %}

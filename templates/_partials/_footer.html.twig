@@ -43,7 +43,7 @@
 						{% endfor %}
 					{% endif %}
 					<li>
-						<a href="{{url("app_login")}}">Connexion dashboard </a>
+						<a href="{{url("app_admin")}}">Connexion dashboard </a>
 					</li>
 				</ul>
 			</div>
@@ -75,11 +75,11 @@
 				<ul>
 					<li>Siège social,</li>
 					{% if entreprise is defined and entreprise|length > 0 %}
-					<li>{{entreprise.adresse}}</li>
+					<li>{{entreprise.adresse|title}}</li>
 					<li>{{entreprise.telephoneEntreprise}}</li>
 					<li>{{entreprise.emailEntreprise}}</li>
 					<li>
-						<a href="{{entreprise.websiteEntreprise}}">{{entreprise.websiteEntreprise}}</a>
+						<a href="{{entreprise.websiteEntreprise}}">{{entreprise.websiteEntreprise|url_encode}}</a>
 					</li>
 					{% endif %}
 				</ul>

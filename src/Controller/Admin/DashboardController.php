@@ -34,7 +34,7 @@ class DashboardController extends AbstractDashboardController
     public function __construct(private AdminURLGenerator $adminURL)
     {
     }
-    #[Route('/admin', name: 'admin')]
+    #[Route('/admin', name: 'app_admin')]
     public function index(): Response
     {
         $adminUrlGenerator = $this->container->get(AdminUrlGenerator::class);

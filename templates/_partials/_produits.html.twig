@@ -83,7 +83,7 @@
 					</div>
 					<span class="price">
 						<span class="amount">
-							<span class="currencySymbol">$</span>{{produit.prixVente}}</span>
+							<span class="currencySymbol">$</span>{{produit.prixVente|number_format(1.2)}}</span>
 					</span>
 					<p class="product-desc mt_20 mb_60">
 						{{produit.description|raw}}

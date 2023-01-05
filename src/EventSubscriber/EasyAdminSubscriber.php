@@ -58,6 +58,6 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         }
 
         
-        $produit->setCode(uniqid('PDT-'));
+        $produit->setCode(strtoupper(uniqid('FIN-')));
     }
 }

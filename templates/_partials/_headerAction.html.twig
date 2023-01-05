@@ -207,8 +207,8 @@
 											<li id="myCarousel" class="carousel slide" data-ride="carousel">
 												<div class="carousel-inner">
 													<div class="item active">
-														{% if entreprise.imageMenu1 %}
-														<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageMenu1)}}" alt="{{entreprise.imageMenu1}}" class="img-responsive" alt="Banner1"></a>
+														{% if entreprise.imageMenu1 is defined  %}
+														<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageMenu1)}}" alt="{{entreprise.imageMenu1}}" class="img-responsive" ></a>
 														{% else %}
 														<a href="#"><img src="{{asset('images/menu-banner1.jpg')}}" class="img-responsive" alt="Banner1"></a>
 														{% endif %}
@@ -216,16 +216,16 @@
 													</div>
 													<!-- End Item -->
 													<div class="item">
-														{% if entreprise.imageMenu1 %}
-														<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageMenu2)}}" alt="{{entreprise.imageMenu2}}" class="img-responsive" alt="Banner1"></a>
+														{% if entreprise.imageMenu2 is defined %}
+														<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageMenu2)}}" alt="{{entreprise.imageMenu2}}" class="img-responsive" ></a>
 														{% else %}
 														<a href="#"><img src="{{asset('images/menu-banner2.jpg')}}" class="img-responsive" alt="Banner1"></a>
 														{% endif %}											
 														</div>
 													<!-- End Item -->
 													<div class="item">
-{% if entreprise.imageMenu1 %}
-														<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageMenu3)}}" alt="{{entreprise.imageMenu3}}" class="img-responsive" alt="Banner1"></a>
+														{% if entreprise.imageMenu3 is defined %}
+														<a href="#"><img src="{{asset('uploads/images/produits/' ~ entreprise.imageMenu3)}}" alt="{{entreprise.imageMenu3}}" class="img-responsive" ></a>
 														{% else %}
 														<a href="#"><img src="{{asset('images/menu-banner3.jpg')}}" class="img-responsive" alt="Banner1"></a>
 														{% endif %}													
@@ -263,7 +263,7 @@
 												<a href="{{url("app_contact")}}">Laisser un message</a>
 											</li>
 											<li>
-												<a href="https://api.whatsapp.com/send?phone=243898900677">Chat WhatsApp</a>
+												<a href="https://api.whatsapp.com/send?phone=243824458059">Chat WhatsApp</a>
 											</li>
 								</ul>
 							</li>
