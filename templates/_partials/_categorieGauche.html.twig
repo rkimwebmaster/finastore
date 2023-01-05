@@ -42,7 +42,9 @@
                   <div class="product-list col-xs-4">
                     <div class="product-thumb">
                       <div class="image product-imageblock"> <a href="product_detail_page.html">
-					   	<img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="{{asset('images/product/product8.jpg')}}"> <img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="images/product/product8-1.jpg"> </a> 
+					   	<img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="{{asset('uploads/images/produits/' ~ produit.photoPrincipale)}}" alt="{{produit.nom}}" title="{{produit.nom}}"> 
+						
+						<img class="img-responsive" title="iPod Classic" alt="iPod Classic" src="{{asset('uploads/images/produits/' ~ produit.photoPrincipaleNoirBlanc)}}" alt="{{produit.nom}}" title="{{produit.nom}}"> </a> 
 					   </div>
                     </div>
                   </div>

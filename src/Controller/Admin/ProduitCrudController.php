@@ -31,7 +31,7 @@ class ProduitCrudController extends AbstractCrudController
             // FormField::addTab('Descriptions'),
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            BooleanField::new('categorie'),
+            AssociationField::new('categorie'),
             MoneyField::new('prixVente')->setCurrency("USD"),
             BooleanField::new('isArrivage')->onlyOnForms(),
             TextField::new('code')->hideOnForm(),
@@ -41,7 +41,7 @@ class ProduitCrudController extends AbstractCrudController
             // FormField::addTab('Caracteristiques'),
             ColorField::new('couleur')->hideOnIndex(),
             ImageField::new('photoPrincipale')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
-            ImageField::new('photoPrincipaleNoirBlanc')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
+            ImageField::new('photoPrincipaleNoirBlanc')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/')->hideOnIndex(),
             CollectionField::new('photos')->useEntryCrudForm(PhotoCrudController::class)->hideOnIndex(),
             // yield CollectionField::new('...')->useEntryCrudForm(CategoryCrudController::class);
 
@@ -49,7 +49,6 @@ class ProduitCrudController extends AbstractCrudController
             // ImageField::new('image')->setBasePath('assets/images/')->setUploadDir('public/assets/images/'),
             UrlField::new('urlVideoYoutube')->hideOnIndex(),
             TextEditorField::new('description')->hideOnIndex(),
-            AssociationField::new('categorie'),
         ];
     }
     

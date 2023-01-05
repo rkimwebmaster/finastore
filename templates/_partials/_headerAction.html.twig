@@ -73,84 +73,6 @@
 								<span id="cart-total">items ({{quantiteProduits}})</span>
 							</a>
 						</div>
-						{# <div id="cart-dropdown" class="cart-menu collapse">
-							<ul>
-								<li>
-									<table class="table table-striped">
-										<tbody>
-											<tr>
-												<td class="text-center">
-													<a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a>
-												</td>
-												<td class="text-left product-name">
-													<a href="#">MacBook Pro</a>
-													<span class="text-left price">$20.00</span>
-													<input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-												</td>
-												<td class="text-center">
-													<a class="close-cart">
-														<i class="fa fa-times-circle"></i>
-													</a>
-												</td>
-											</tr>
-											<tr>
-												<td class="text-center">
-													<a href="#"><img src="{{asset('images/product/70x84.jpg')}}" alt="iPod Classic" title="iPod Classic"></a>
-												</td>
-												<td class="text-left product-name">
-													<a href="#">MacBook Pro</a>
-													<span class="text-left price">$20.00</span>
-													<input class="cart-qty" name="product_quantity" min="1" value="1" type="number">
-												</td>
-												<td class="text-center">
-													<a class="close-cart">
-														<i class="fa fa-times-circle"></i>
-													</a>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</li>
-								<li>
-									<table class="table">
-										<tbody>
-											<tr>
-												<td class="text-right">
-													<strong>Sous-total</strong>
-												</td>
-												<td class="text-right">$2,100.00</td>
-											</tr>
-											<tr>
-												<td class="text-right">
-													<strong>Eco Tax (-2.00)</strong>
-												</td>
-												<td class="text-right">$2.00</td>
-											</tr>
-											<tr>
-												<td class="text-right">
-													<strong>VAT (20%)</strong>
-												</td>
-												<td class="text-right">$20.00</td>
-											</tr>
-											<tr>
-												<td class="text-right">
-													<strong>Total</strong>
-												</td>
-												<td class="text-right">$2,122.00</td>
-											</tr>
-										</tbody>
-									</table>
-								</li>
-								<li>
-									<form action="{{url("cart_index")}}">
-										<input title="Voir mon panier" class="btn pull-left mt_10" value="Panier" type="submit">
-									</form>
-									<form action="{{url("cart_index")}}">
-										<input class="btn pull-right mt_10" value="Checkout" type="submit">
-									</form>
-								</li>
-							</ul>
-						</div> #}
 					</div>
 				</div>
 				<nav class="navbar">
@@ -165,7 +87,7 @@
 							<li>
 								<a href="{{url("app_accueil")}}">Accueil</a>
 							</li>
-							{% if is_granted('ROLE_ADMIN') %}
+							{# {% if is_granted('ROLE_ADMIN') %}
 						    <li class="dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">DashBoard
 								</a>
@@ -178,7 +100,7 @@
 											</li>
 								</ul>
 							</li>
-							{% endif %}
+							{% endif %} #}
 							<li class="dropdown mega-dropdown">
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown">Produits
 								</a>

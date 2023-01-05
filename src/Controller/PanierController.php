@@ -37,6 +37,7 @@ class PanierController extends AbstractController
             }
         }
         return $this->redirectToRoute('app_achat_new', [], Response::HTTP_SEE_OTHER);
+        dd("salut");
 
         // dd($quantiteProduits);
         return $this->render('panier/index.html.twig', [

@@ -14,6 +14,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Mailer\Exception\TransportException;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/achat')]
@@ -30,8 +33,9 @@ class AchatController extends AbstractController
     }
 
     #[Route('/new', name: 'app_achat_new', methods: ['GET', 'POST'])]
-    public function new(SessionInterface $session,MobileMoneyRepository $mobileMoneyRepository, ClientRepository $clientRepository, ProduitRepository $produitRepository, Request $request, EntityManagerInterface $entityManager): Response
+    public function new(MailerInterface $mailer, SessionInterface $session,MobileMoneyRepository $mobileMoneyRepository, ClientRepository $clientRepository, ProduitRepository $produitRepository, Request $request, EntityManagerInterface $entityManager): Response
     {
+
         $user=$this->getUser();
         if(!$user){
             $this->addFlash("info", "Prière de vous connectez avant de confirmer votre achat");
@@ -44,6 +48,7 @@ class AchatController extends AbstractController
             $this->addFlash('info','Contacter pour création des mobiles money....');
             return $this->redirectToRoute('app_accueil', [], Response::HTTP_SEE_OTHER);
         }
+        dd("achat");
 
         $email=$user->getEmail();
         $client=$clientRepository->findOneBy(['email'=>$email]);
@@ -85,6 +90,16 @@ class AchatController extends AbstractController
             $entityManager->flush();
             $session->set("panier",[]);
             $this->addFlash("info","Merci d'avoir effectué votre achat. Vous serez servie dans le delai.");
+
+            $mail= (new Email())
+            ->from('info@finasarl.com')
+            ->to($achat->getEmail())
+            ->text('Merci pour votre achat');
+            try{
+                $mailer->send($mail);
+            }catch(TransportException $e){
+                $this->addFlash("danger","Une erreur s'est produite.");
+            }
             return $this->redirectToRoute('app_achat_index', [], Response::HTTP_SEE_OTHER);
         }
 

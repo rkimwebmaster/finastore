@@ -36,8 +36,8 @@ Le systeme a 6 types d'images à preparer
 4. l'image phare qui est sur certaines pages en bas des la liste des catégories du systeme, elle est de dimension  300 X 350 et de poids inferieur a 130 Kb
 5. POur chaque produit, préparer une image de dimension  624 X 800 et de poids Gr avec sa copie en filigranne, ensuite des images auxilliaires 
 qui montrent le produit sous differents angles 
-6. les logos des partenaires 215 x 140 
-7. Les photos des mebres de l'équipe gestionnaire  de dimension 390 x 390 
+6. les logos des partenaires 215 x 140 et bien centré au milieux 
+de preference sur fond noir ou soit en noir et blanc ( le choiox sera appliqué à tous)
 
 Note : Pour  chacun de vos produits rassurez-vous d'avoir une vidéos youtube dont vous mettrez l'url dans la page de création de produit 
 

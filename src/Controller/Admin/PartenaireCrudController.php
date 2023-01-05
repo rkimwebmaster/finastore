@@ -22,7 +22,7 @@ class PartenaireCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('nom'),
-            ImageField::new('phpto')->setBasePath('uploads/images/produits/')->setUploadDir('public/uploads/images/produits/'),
+            ImageField::new('logo')->setBasePath('uploads/images/partenaires/')->setUploadDir('public/uploads/images/partenaires/'),
             TextEditorField::new('description'),
         ];
     }
