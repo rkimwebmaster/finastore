@@ -37,6 +37,8 @@ Le systeme a 3 types d'images à preparer
 5. POur chaque produit, préparer une image de dimension  624 X 800 et de poids Gr avec sa copie en filigranne, ensuite des images auxilliaires 
 qui montrent le produit sous differents angles 
 
+Note : Pour  chacun de vos produits rassurez-vous d'avoir une vidéos youtube dont vous mettrez l'url dans la page de création de produit 
+
 initialisation des pages 
 ________________________
 Préparer le contenue des pages a initialisee sont entre autres : 
