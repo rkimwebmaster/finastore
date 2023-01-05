@@ -36,14 +36,14 @@
 									<td>{{ achat.dateAchat ? achat.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
 									<td>{{ achat.prixTotal }}</td>
 									<td>{{ achat.numeroReference }}</td>
-									<td><span class="badge badge-info">En cours </span></td>
+									<td><span class="badge badge-info">{{ achat.etat }} </span></td>
 									<td>
 										<a class="btn btn-default" href="{{ path('app_achat_show', {'id': achat.id}) }}"><span class="fa fa-search-plus"></span></a>
 									</td>
 								</tr>
 							{% else %}
 								<tr>
-									<td class="text-warning" colspan="6">Vous n'avez pas encore effectuer des achats sur notre plateforme. </td>
+									<td class="text-warning" colspan="5">Vous n'avez pas encore effectuer des achats sur notre plateforme. </td>
 								</tr>
 							{% endfor %}
 						</tbody>

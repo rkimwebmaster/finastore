@@ -1,9 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}facture {{ achat.id }} {% endblock %}
+{% block title %}Facture {{ achat.id|title }} {% endblock %}
 
 {% block body %}
-
+<div class="row">
+				<div class="col col-12">
     <table class="table">
         <tbody>
             <tr>
@@ -11,51 +12,28 @@
                 <td>{{ achat.dateAchat ? achat.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>DateLivraison</th>
+                <th>Date Livraison</th>
                 <td>{{ achat.dateLivraison ? achat.dateLivraison|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>
-                <th>PrixTotal</th>
-                <td>{{ achat.prixTotal }}</td>
+                <th>Prix Total</th>
+                <td> USD {{ achat.prixTotal }}</td>
             </tr>
             <tr>
-                <th>NumeroReference</th>
+                <th>Numero Réference</th>
                 <td>{{ achat.numeroReference }}</td>
             </tr>
             <tr>
-                <th>IsApprouve</th>
-                <td>{{ achat.isApprouve ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsAnnule</th>
-                <td>{{ achat.isAnnule ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsEnCours</th>
-                <td>{{ achat.isEnCours ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsPaye</th>
-                <td>{{ achat.isPaye ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>IsLivre</th>
-                <td>{{ achat.isLivre ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ achat.createdAt ? achat.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ achat.updatedAt ? achat.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <th>Etat</th>
+                <td>{{ achat.etat }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('app_achat_index') }}">back to list</a>
+    <a class="btn btn-success" href="{{ path('app_achat_index') }}">Voir tout mes achats</a>
 
-    <a href="{{ path('app_achat_edit', {'id': achat.id}) }}">edit</a>
+    {# {{ include('achat/_delete_form.html.twig') }} #}
 
-    {{ include('achat/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

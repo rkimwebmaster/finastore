@@ -17,6 +17,7 @@ use App\Repository\PageTermConditionRepository;
 use App\Repository\PartenaireRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\ServiceRepository;
+use App\Repository\TeamMemberRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -93,13 +94,14 @@ class AccueilController extends AbstractController
 
     
     #[Route('/qsn', name: 'app_qsn')]
-    public function qsn(PageQSNRepository $pageQSNRepository, PartenaireRepository $partenaireRepository): Response
+    public function qsn(PageQSNRepository $pageQSNRepository, TeamMemberRepository $teamMemberRepository): Response
     {
         $page=$pageQSNRepository->findOneBy([],['createdAt'=>'desc']);
-        $partenaires=$partenaireRepository->findAll([],['createdAt'=>'desc']);
+        $teamMembers=$teamMemberRepository->findAll([],['createdAt'=>'desc']);
         return $this->render('accueil/page.html.twig', [
             'page'=>$page,
-            'partenaires'=>$partenaires,
+            'indice'=>'qsn',
+            'teamMembers'=>$teamMembers,
             'titre'=> 'Qui sommes-nous ? ',
 
         ]);

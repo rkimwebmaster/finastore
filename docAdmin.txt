@@ -29,13 +29,15 @@ le poid des images doivent etre autour de 200 Kb pour les images de produits tou
 
 Résumé sur les images (tres important)
 ______________________
-Le systeme a 3 types d'images à preparer 
+Le systeme a 6 types d'images à preparer 
 1. deux images hero qui sont sur la page d'accueil de dimension 1903 x 650 poids et de poids < 200 Kb
 2. trois images qui sont dans le bandeau deroulant du menu de dimension 295 X 320 et de poids < 40 Kb
 3. le logo qui figure sur le haut de toutes les pages de dimension 233 X 57 et de poids 
 4. l'image phare qui est sur certaines pages en bas des la liste des catégories du systeme, elle est de dimension  300 X 350 et de poids inferieur a 130 Kb
 5. POur chaque produit, préparer une image de dimension  624 X 800 et de poids Gr avec sa copie en filigranne, ensuite des images auxilliaires 
 qui montrent le produit sous differents angles 
+6. les logos des partenaires 215 x 140 
+7. Les photos des mebres de l'équipe gestionnaire  de dimension 390 x 390 
 
 Note : Pour  chacun de vos produits rassurez-vous d'avoir une vidéos youtube dont vous mettrez l'url dans la page de création de produit 
 

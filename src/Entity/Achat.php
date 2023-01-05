@@ -66,12 +66,35 @@ class Achat
 
     #[ORM\ManyToOne(inversedBy: 'achats')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;    
+    private ?User $user = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $etat = null;  
+
+    public function getCodeClient(){
+        if($this->getUser()){
+            return $this->getUser()->getCodeClient();
+        }else{
+            return "Aucun client";
+        }
+    }
+    
+    
+    #[ORM\PreUpdate]
+    public function misAJour(){
+        if($this->isApprouve){
+            $this->etat="Approuvé";
+        }elseif($this->isLivre){
+            $this->etat="Livré";   
+        }elseif($this->isAnnule){
+            $this->etat="Annulé";   
+        }
+        // dd("testons");
+    }
 
     public function __construct(User $user)
     {
         $this->user=$user;
-        $this->dateLivraison=new \DateTimeImmutable();
         $this->dateAchat=new \DateTimeImmutable();
         $this->createdAt=new \DateTimeImmutable();
         // dd("salut");
@@ -82,6 +105,7 @@ class Achat
         $this->isPaye=false;
         $this->isLivre=false;
         $this->email=$this->user->getEmail();
+        $this->etat="En attente validation";
     }
 
     
@@ -296,6 +320,18 @@ class Achat
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getEtat(): ?string
+    {
+        return $this->etat;
+    }
+
+    public function setEtat(string $etat): self
+    {
+        $this->etat = $etat;
 
         return $this;
     }

@@ -18,6 +18,7 @@ use App\Entity\Photo;
 use App\Entity\Produit;
 use App\Entity\Recherche;
 use App\Entity\Service;
+use App\Entity\TeamMember;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -53,6 +54,12 @@ class DashboardController extends AbstractDashboardController
         return [
             MenuItem::linkToDashboard('WebSite', 'fa fa-home')->setLinkTarget('app_accueil'),
 
+            
+            MenuItem::subMenu('Achats ')->setSubItems([
+                MenuItem::linkToCrud('Liste ', 'fa fa-tags', Achat::class)->setAction(Crud::PAGE_INDEX),
+                // MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Categorie::class)->setAction(Crud::PAGE_NEW),
+
+            ]),
             MenuItem::section('Configuration', 'fa fa-search-plus'),
             MenuItem::subMenu('Entreprise')->setSubItems([
                 MenuItem::linkToCrud('Liste ', 'fa fa-tags', Entreprise::class)->setAction(Crud::PAGE_INDEX),
@@ -87,6 +94,11 @@ class DashboardController extends AbstractDashboardController
             MenuItem::subMenu('Partenaires ')->setSubItems([
                 MenuItem::linkToCrud('Liste ', 'fa fa-tags', Partenaire::class)->setAction(Crud::PAGE_INDEX),
                 MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', Partenaire::class)->setAction(Crud::PAGE_NEW),
+
+            ]),
+            MenuItem::subMenu('Equipe ')->setSubItems([
+                MenuItem::linkToCrud('Liste ', 'fa fa-tags', TeamMember::class)->setAction(Crud::PAGE_INDEX),
+                MenuItem::linkToCrud('Nouveau', 'fa fa-plus-circle', TeamMember::class)->setAction(Crud::PAGE_NEW),
 
             ]),
             MenuItem::subMenu('Services')->setSubItems([
