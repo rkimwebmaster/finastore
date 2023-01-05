@@ -1,18 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Achat{% endblock %}
+{% block title %}facture {{ achat.id }} {% endblock %}
 
 {% block body %}
-    <h1>Achat</h1>
 
     <table class="table">
         <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ achat.id }}</td>
-            </tr>
-            <tr>
-                <th>DateAchat</th>
+                <th>Date Achat</th>
                 <td>{{ achat.dateAchat ? achat.dateAchat|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
             <tr>

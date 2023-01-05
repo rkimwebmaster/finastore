@@ -51,8 +51,46 @@
     <!-- =====  CONTAINER START  ===== -->
     <div class="container mt_30">
       <div class="row ">
-        {{ include ("_partials/_ariane.html.twig") }}
+        {# {{ include ("_partials/_ariane.html.twig") }} #}
+        {# ici ariane pour mieux gerer les block #}
 
+<!-- =====  BANNER STRAT  ===== -->
+<div class="col-sm-12">
+	<div class="breadcrumb ptb_20">
+		<h1>
+			{% block ariane1 %}
+				{{ block('title')}}
+			{% endblock %}
+		</h1>
+		<ul>
+			<li>
+				<a href="{{url('app_accueil')}}">Accueil</a>
+			</li>
+			<li class="active">
+				{% block ariane2 %}
+					Shopping online
+				{% endblock %}
+			</li>
+		</ul>
+	</div>
+	{# read and display all flash messages #}
+	{% for label, messages in app.flashes %}
+		{% for message in messages %}
+			<div class="alert alert-{{ label }}">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<strong>
+					<i class="">
+						👨
+					</i>
+					{{ label|title }}
+					!</strong>
+				{{ message }}
+			</div>
+		{% endfor %}
+	{% endfor %}
+</div>
+
+{# fin ariane  #}
         <div id="column-left" class="col-sm-4 col-lg-3 hidden-xs">
             {{ include ("_partials/_categorieGauche.html.twig") }}
         </div>

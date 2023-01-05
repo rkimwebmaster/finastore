@@ -1,8 +1,24 @@
 <!-- =====  BANNER STRAT  ===== -->
-    <div class="banner">
-      <div class="main-banner owl-carousel">
-        <div class="item"><a href="#"><img src="{{asset('images/main_banner1.jpg')}}" alt="Main Banner" class="img-responsive" /></a></div>
-        <div class="item"><a href="#"><img src="{{asset('images/main_banner2.jpg')}}" alt="Main Banner" class="img-responsive" /></a></div>
-      </div>
-    </div>
-    <!-- =====  BANNER END  ===== -->
+<div class="banner">
+	<div class="main-banner owl-carousel">
+
+		<div class="item">
+			<a href="#">
+      		{% if entreprise is defined %}
+              <img   src="{{asset('uploads/images/produits/' ~ entreprise.imageHeroPrimaire)}}" alt="{{entreprise.imageHeroPrimaire}}" title="{{entreprise.imageHeroPrimaire}}" class="img-responsive"/>
+          {% else %}
+                <img src="{{asset('images/main_banner1.jpg')}}" alt="Main Banner" class="img-responsive"/>
+          {% endif %}
+			</a>
+		</div>
+		<div class="item">
+			<a href="#">
+          {% if entreprise is defined %}
+              <img   src="{{asset('uploads/images/produits/' ~ entreprise.imageHeroSecondaire)}}" alt="{{entreprise.imageHeroSecondaire}}" title="{{entreprise.imageHeroSecondaire}}" class="img-responsive"/>
+          {% else %}
+                <img src="{{asset('images/main_banner2.jpg')}}" alt="Main Banner" class="img-responsive"/>
+          {% endif %}      </a>
+		</div>
+	</div>
+</div>
+<!-- =====  BANNER END  ===== -->

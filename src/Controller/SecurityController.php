@@ -13,6 +13,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
+            $this->addFlash('info', 'Vous êtes connécté(e)');
             return $this->redirectToRoute('app_achat_index');
         }
 
@@ -21,7 +22,6 @@ class SecurityController extends AbstractController
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-        $this->addFlash('info', 'Vous êtes connécté(e)');
         // return $this->render('_partials/_login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }

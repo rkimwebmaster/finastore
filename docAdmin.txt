@@ -26,3 +26,21 @@ _____________________________________________
 
 NB: se rassurer que les images n'ont pas un grand poids car risque d'alourdir le chargement de la page 
 le poid des images doivent etre autour de 200 Kb pour les images de produits tout en se rassurant de la qualité 
+
+Résumé sur les images (tres important)
+______________________
+Le systeme a 3 types d'images à preparer 
+1. deux images hero qui sont sur la page d'accueil de dimension 1903 x 650 poids et de poids < 200 Kb
+2. trois images qui sont dans le bandeau deroulant du menu de dimension 295 X 320 et de poids < 40 Kb
+3. le logo qui figure sur le haut de toutes les pages de dimension 233 X 57 et de poids 
+4. l'image phare qui est sur certaines pages en bas des la liste des catégories du systeme, elle est de dimension  300 X 350 et de poids inferieur a 130 Kb
+5. POur chaque produit, préparer une image de dimension  624 X 800 et de poids Gr avec sa copie en filigranne, ensuite des images auxilliaires 
+qui montrent le produit sous differents angles 
+
+initialisation des pages 
+________________________
+Préparer le contenue des pages a initialisee sont entre autres : 
+- la page a propos de nous 
+- Information sur la livraison 
+- Provacy policy 
+- Garantie de remboursement 

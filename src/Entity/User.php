@@ -62,7 +62,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function misAJour(){
         $this->codeClient=strtoupper(uniqid('CL-'));
         if(in_array('ROLE_ADMIN', $this->getRoles())){
-            $this->getRolePrincipal="Administrateur ";
+            $this->rolePrincipal="Administrateur ";
         }
     }
 
